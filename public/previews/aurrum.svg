@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#135e5f" />
+      <stop offset="100%" stop-color="#07100f" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grad)" />
+  <rect x="80" y="80" width="1440" height="740" rx="40" fill="#0f2d2c" opacity="0.8" />
+  <text x="120" y="220" fill="#ffffff" font-family="Inter, sans-serif" font-size="64" font-weight="700">Aurrum Project Controls</text>
+  <text x="120" y="320" fill="#c5f0e0" font-family="Inter, sans-serif" font-size="32">NEC3 / NEC4 SaaS dashboard preview</text>
+  <rect x="120" y="380" width="1260" height="360" rx="30" fill="#0d1413" stroke="#1e524f" stroke-width="4" />
+  <rect x="160" y="420" width="360" height="120" rx="24" fill="#0f3e3c" />
+  <rect x="560" y="420" width="760" height="120" rx="24" fill="#123a37" />
+  <rect x="160" y="560" width="1160" height="100" rx="24" fill="#0e3330" />
+  <circle cx="320" cy="625" r="24" fill="#1fd0b2" />
+  <circle cx="420" cy="625" r="24" fill="#00ffce" />
+  <circle cx="520" cy="625" r="24" fill="#8ef6e4" />
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8a3d" />
+      <stop offset="100%" stop-color="#8f3100" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grad2)" />
+  <rect x="80" y="80" width="1440" height="740" rx="40" fill="#3f1902" opacity="0.82" />
+  <text x="120" y="220" fill="#fff7e7" font-family="Inter, sans-serif" font-size="64" font-weight="700">Breadwrapz</text>
+  <text x="120" y="320" fill="#ffe8c3" font-family="Inter, sans-serif" font-size="32">Food & lifestyle brand preview</text>
+  <rect x="120" y="380" width="1260" height="360" rx="30" fill="#522204" stroke="#ffba86" stroke-width="4" />
+  <rect x="160" y="420" width="560" height="120" rx="24" fill="#63310d" />
+  <rect x="760" y="420" width="540" height="120" rx="24" fill="#7f3e13" />
+  <rect x="160" y="560" width="1160" height="100" rx="24" fill="#7a3714" />
+  <circle cx="320" cy="625" r="24" fill="#ffe6b6" />
+  <circle cx="420" cy="625" r="24" fill="#ffd5a1" />
+  <circle cx="520" cy="625" r="24" fill="#fff0cf" />
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#041015" />
+      <stop offset="1" stop-color="#081217" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" />
+
+  <!-- Sidebar -->
+  <rect x="40" y="40" width="300" height="820" rx="14" fill="#07101a" />
+  <g fill="#0f2a2a" opacity="0.95">
+    <rect x="60" y="120" width="260" height="64" rx="10" />
+    <rect x="60" y="208" width="220" height="44" rx="8" />
+    <rect x="60" y="264" width="220" height="44" rx="8" />
+    <rect x="60" y="320" width="220" height="44" rx="8" />
+    <rect x="60" y="376" width="220" height="44" rx="8" />
+    <rect x="60" y="432" width="220" height="44" rx="8" />
+    <rect x="60" y="488" width="220" height="44" rx="8" />
+  </g>
+
+  <!-- Main content area -->
+  <rect x="360" y="40" width="1200" height="820" rx="14" fill="#0b1b1c" />
+
+  <!-- Header cards -->
+  <rect x="400" y="96" width="380" height="120" rx="12" fill="#071b1b" />
+  <rect x="800" y="96" width="360" height="120" rx="12" fill="#092525" />
+  <rect x="1180" y="96" width="260" height="120" rx="12" fill="#0b2a28" />
+
+  <!-- Dashboard widgets -->
+  <rect x="400" y="240" width="720" height="160" rx="12" fill="#072025" />
+  <rect x="1128" y="240" width="352" height="160" rx="12" fill="#0b2220" />
+
+  <rect x="400" y="420" width="1080" height="340" rx="12" fill="#081619" />
+
+  <!-- Small accents / indicators -->
+  <circle cx="620" cy="172" r="8" fill="#1fd0b2" />
+  <circle cx="940" cy="172" r="8" fill="#8ef6e4" />
+  <circle cx="1280" cy="172" r="8" fill="#00ffce" />
+
+  <!-- Labels -->
+  <text x="84" y="90" fill="#9fcfc6" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Aurrum</text>
+  <text x="400" y="80" fill="#cdeee6" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">NEC Contract Intelligence</text>
+
+  <!-- subtle grid lines to mimic UI -->
+  <g stroke="#0e2a29" stroke-width="1" opacity="0.6">
+    <line x1="420" y1="460" x2="1420" y2="460" />
+    <line x1="420" y1="540" x2="1420" y2="540" />
+    <line x1="420" y1="620" x2="1420" y2="620" />
+  </g>
+</svg>

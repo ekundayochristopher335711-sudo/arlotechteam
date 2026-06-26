@@ -1,0 +1,290 @@
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/700.css";
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --radius: 1rem;
+  --font-sans: "Space Grotesk", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  /* Light/default palette */
+  --background: 247 243 237; /* warm cream */
+  --foreground: 12 17 20; /* dark text */
+  --card: 255 255 255;
+  --card-foreground: 12 17 20;
+  --popover: 255 255 255;
+  --popover-foreground: 12 17 20;
+  --primary: 10 72 43;
+  --primary-foreground: 255 255 255;
+  --secondary: 60 138 95;
+  --secondary-foreground: 255 255 255;
+  --accent: 232 194 101;
+  --accent-foreground: 12 12 8;
+  --muted: 120 120 110;
+  --muted-foreground: 102 98 88;
+  --border: 12 17 20 / 0.06;
+  --input: 250 250 248;
+  --ring: 10 72 43;
+  --glass: 255 255 255 / 0.8;
+  --surface: 255 255 255 / 0.96;
+  --surface-2: 250 250 248 / 0.96;
+  --neon: 10 72 43;
+  --neon-soft: 10 72 43 / 0.06;
+  --grid-bg: linear-gradient(rgba(10,72,43,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(10,72,43,0.06) 1px, transparent 1px);
+  --gradient-radial: radial-gradient(circle at 8% 8%, rgba(10, 72, 43, 0.12), transparent 32%), radial-gradient(circle at 92% 18%, rgba(232, 194, 101, 0.12), transparent 28%);
+  --gradient-hero: linear-gradient(130deg, rgba(255,255,255,0.98), rgba(250,250,248,0.98));
+  --shadow-glow: 0 0 60px -28px rgba(10, 72, 43, 0.12);
+  --shadow-card: 0 12px 48px -18px rgba(10, 14, 20, 0.06);
+}
+
+/* Dark mode overrides via class */
+.dark {
+  color-scheme: dark;
+  --radius: 1rem;
+  --font-sans: "Space Grotesk", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --background: 14 22 18;
+  --foreground: 247 243 237;
+  --card: 22 34 28;
+  --card-foreground: 245 241 235;
+  --popover: 20 30 24;
+  --popover-foreground: 247 243 237;
+  --primary: 10 72 43;
+  --primary-foreground: 247 243 237;
+  --secondary: 60 138 95;
+  --secondary-foreground: 10 14 12;
+  --accent: 232 194 101;
+  --accent-foreground: 14 12 8;
+  --muted: 108 116 92;
+  --muted-foreground: 213 205 184;
+  --border: 213 205 184 / 0.22;
+  --input: 16 24 20;
+  --ring: 232 194 101;
+  --glass: 18 26 24 / 0.72;
+  --surface: 24 34 28 / 0.76;
+  --surface-2: 12 18 16 / 0.80;
+  --neon: 10 72 43;
+  --neon-soft: 10 72 43 / 0.14;
+  --grid-bg: linear-gradient(rgba(232, 194, 101, 0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(232, 194, 101, 0.14) 1px, transparent 1px);
+  --gradient-radial: radial-gradient(circle at 8% 8%, rgba(10, 72, 43, 0.12), transparent 22%), radial-gradient(circle at 92% 18%, rgba(232, 194, 101, 0.12), transparent 18%);
+  --gradient-hero: linear-gradient(130deg, rgba(12, 22, 18, 0.94), rgba(8, 12, 10, 0.96));
+  --shadow-glow: 0 0 90px -32px rgba(10, 72, 43, 0.28);
+  --shadow-card: 0 28px 100px -44px rgba(0, 0, 0, 0.42);
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  -webkit-text-size-adjust: 100%;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    background-image: var(--gradient-radial);
+    background-attachment: fixed;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-feature-settings: "liga" 1, "kern" 1, "cv02" 1;
+    line-height: 1.65;
+    letter-spacing: 0.003em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.03em;
+  }
+
+  p,
+  li,
+  span {
+    color: rgb(var(--muted-foreground));
+  }
+
+  .hero-title,
+  .section-title,
+  .button-hero,
+  .button-primary,
+  .button-secondary,
+  .card-panel,
+  .hero-panel {
+    font-family: var(--font-sans);
+  }
+
+  .hero-title {
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+  }
+
+  .hero-subtitle,
+  .section-subtitle {
+    font-weight: 500;
+    color: rgb(var(--muted-foreground));
+    letter-spacing: 0.01em;
+  }
+
+  .card-panel {
+    line-height: 1.75;
+  }
+
+  .button-hero,
+  .button-primary,
+  .button-secondary {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp,
+  .font-mono {
+    font-family: var(--font-mono);
+    font-feature-settings: "liga" 0, "calt" 0;
+  }
+
+  ::selection {
+    background: rgba(var(--neon), 0.24);
+    color: rgb(var(--background));
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(var(--glass));
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(var(--border));
+  }
+
+  .glass-strong {
+    background: rgba(var(--surface-2));
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(232, 194, 101, 0.16);
+  }
+
+  .glow-border {
+    position: relative;
+    border: 1px solid rgba(118, 233, 180, 0.22);
+    box-shadow: inset 0 0 20px rgba(118, 233, 180, 0.08), 0 0 32px -10px rgba(118, 233, 180, 0.16);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-panel {
+    box-shadow: var(--shadow-card);
+  }
+
+  .grid-overlay {
+    background-image: var(--grid-bg);
+    background-size: 48px 48px;
+  }
+
+  .label-tech {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    font-size: 0.65rem;
+    color: rgb(var(--accent));
+  }
+
+  .section-label {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgb(var(--secondary));
+  }
+
+  .terminal-panel {
+    background: rgba(10, 14, 25, 0.9);
+    border: 1px solid rgba(118, 233, 180, 0.12);
+    backdrop-filter: blur(16px);
+  }
+
+  .button-magnetic {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+
+  .button-magnetic:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 48px -24px rgba(232, 194, 101, 0.35);
+  }
+
+  .text-accent {
+    color: rgb(var(--accent));
+  }
+
+  .text-emerald {
+    color: rgb(var(--primary));
+  }
+
+  .section-mask {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-mask::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 40%);
+    pointer-events: none;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out both;
+  }
+
+  .animate-grid-pan {
+    animation: grid-pan 24s linear infinite;
+  }
+
+  @keyframes pulse-flicker {
+    0%,
+    100% { opacity: 0.96; }
+    50% { opacity: 0.78; }
+  }
+}
+
+@keyframes float {
+  0%,
+  100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grid-pan {
+  from { background-position: 0 0; }
+  to { background-position: 48px 48px; }
+}
