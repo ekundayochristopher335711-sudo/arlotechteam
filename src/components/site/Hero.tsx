@@ -25,9 +25,9 @@ export default function Hero() {
         className="absolute inset-0 h-full w-full object-cover object-right"
       />
 
-      {/* Overlay — lighter on mobile so image shows */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#07120C]/90 via-[#07120C]/60 to-transparent lg:from-[#07120C] lg:via-[#07120C]/80 lg:to-[#07120C]/25" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#07120C]/90 via-transparent to-[#07120C]/30" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#07120C]/90 via-[#07120C]/60 to-[#07120C]/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#07120C]/80 via-transparent to-[#07120C]/30" />
 
       {/* Grid */}
       <div
@@ -90,15 +90,15 @@ export default function Hero() {
 
       {/* Stats */}
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 pb-8 lg:pb-16 w-full">
-        <div className="flex items-center justify-between max-w-xl lg:max-w-2xl gap-3">
+        <div className="grid grid-cols-2 gap-4 sm:flex sm:items-center sm:gap-8 lg:gap-10 max-w-2xl">
           {stats.map((item) => (
-            <div key={item.label} className="flex items-center gap-2 lg:gap-3">
+            <div key={item.label} className="flex items-center gap-2.5">
               <div className="shrink-0 rounded-full border border-green-500/30 bg-green-500/10 p-2 lg:p-3">
                 <item.icon className="h-4 w-4 lg:h-5 lg:w-5 text-green-300" />
               </div>
-              <div className="min-w-0">
-                <h3 className="text-base lg:text-2xl font-bold leading-none">{item.number}</h3>
-                <p className="text-[9px] lg:text-xs text-zinc-400 leading-tight mt-0.5">{item.label}</p>
+              <div>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold leading-none">{item.number}</h3>
+                <p className="text-[10px] lg:text-xs text-zinc-400 leading-tight mt-0.5">{item.label}</p>
               </div>
             </div>
           ))}
