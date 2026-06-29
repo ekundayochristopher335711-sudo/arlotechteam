@@ -30,7 +30,7 @@ export const projects: Project[] = [
   },
   {
     title: "Breadwrapz",
-    href: "https://breadwrapz.netlify.app",
+    href: "https://breadwrapz2.netlify.app",
     category: "Food & Lifestyle Brand",
     color: "from-orange-500/50 to-amber-700/40",
     screenshot: "/previews/breadwrapz.svg",
