@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PageLayout } from "../components/site/PageLayout";
-import { posts, categories } from "../data/posts";
+import { posts as staticPosts, categories, type Post } from "../data/posts";
 import { useSEO } from "../lib/useSEO";
 import { Search, ArrowRight, Clock, User } from "lucide-react";
 
 export default function Blog() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+  const [posts, setPosts] = useState<Post[]>(staticPosts);
+
+  useEffect(() => {
+    fetch("/api/posts.php")
+      .then((r) => r.json())
+      .then((data) => { if (Array.isArray(data) && data.length) setPosts(data); })
+      .catch(() => {});
+  }, []);
 
   useSEO({
     title: "Blog — Insights, Ideas & Digital Growth",

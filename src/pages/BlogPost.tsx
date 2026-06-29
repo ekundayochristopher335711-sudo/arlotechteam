@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { PageLayout } from "../components/site/PageLayout";
-import { getPostBySlug, posts } from "../data/posts";
+import { getPostBySlug, posts as staticPosts, type Post } from "../data/posts";
 import { useSEO } from "../lib/useSEO";
 import { ArrowLeft, ArrowRight, Clock, User, Tag } from "lucide-react";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const [posts, setPosts] = useState(staticPosts);
+  const [post, setPost] = useState<Post | undefined>(slug ? getPostBySlug(slug) : undefined);
+
+  useEffect(() => {
+    fetch("/api/posts.php")
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length) {
+          setPosts(data);
+          const found = data.find((p: Post) => p.slug === slug);
+          if (found) setPost(found);
+        }
+      })
+      .catch(() => {});
+  }, [slug]);
 
   useSEO({
     title: post ? post.title : "Blog Post Not Found",
@@ -76,7 +90,7 @@ export default function BlogPost() {
           </p>
           <Link
             to="/contact#schedule"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-yellow-300 px-7 py-3 text-sm font-bold text-[#07100f] hover:scale-105 transition"
+            className="mt-5 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-emerald-400 to-yellow-300 px-7 py-3 text-sm font-bold text-[#07100f] hover:scale-105 transition"
           >
             Get in Touch <ArrowRight size={15} />
           </Link>
