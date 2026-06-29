@@ -95,14 +95,16 @@ export default function Services() {
           {services.map((service) => (
             <article
               key={service.title}
-              className="glass rounded-3xl border border-border/30 p-8 shadow-panel transition hover:-translate-y-1 hover:border-emerald-300/40"
+              className="relative overflow-hidden rounded-3xl border border-emerald-500/20 p-8 shadow-panel transition hover:-translate-y-1 hover:border-emerald-400/40 bg-linear-to-br from-emerald-950/80 via-emerald-900/40 to-amber-950/30"
             >
-              <h3 className="text-xl font-semibold text-foreground">{service.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">{service.summary}</p>
-              <ul className="mt-6 space-y-2.5 text-sm text-muted-foreground">
+              <h3 className="text-xl font-semibold bg-linear-to-r from-emerald-300 to-amber-300 bg-clip-text text-transparent">
+                {service.title}
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-emerald-100/70">{service.summary}</p>
+              <ul className="mt-6 space-y-2.5 text-sm text-emerald-100/60">
                 {service.bullets.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" />
                     <span>{item}</span>
                   </li>
                 ))}

@@ -167,8 +167,8 @@ export default function About() {
               We're based in Lagos, Nigeria — but we work with clients across Europe, Asia, and beyond. All our work is done remotely and we communicate clearly at every step.
             </p>
             <div className="pt-2 space-y-2 text-sm">
-              <a href="mailto:arlotechweb@gmail.com" className="block text-foreground hover:text-emerald-400 transition">
-                arlotechweb@gmail.com
+              <a href="mailto:contact@arlotech.com.ng" className="block text-foreground hover:text-emerald-400 transition">
+                contact@arlotech.com.ng
               </a>
             </div>
           </div>

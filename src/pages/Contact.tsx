@@ -5,7 +5,7 @@ import { useSEO } from "../lib/useSEO";
 export default function Contact() {
   useSEO({
     title: "Contact Us — Hire a Web Designer in Lagos",
-    description: "Get in touch with Arlotech for a free consultation. We build custom websites and web apps for businesses worldwide. Based in Lagos. Email: arlotechweb@gmail.com.",
+    description: "Get in touch with Arlotech for a free consultation. We build custom websites and web apps for businesses worldwide. Based in Lagos. Email: contact@arlotech.com.ng.",
     path: "/contact",
   });
 
@@ -115,7 +115,7 @@ export default function Contact() {
                 const email = (document.getElementById("contactEmail") as HTMLInputElement)?.value || "";
                 const brief = (document.getElementById("brief") as HTMLTextAreaElement)?.value || "";
                 const body = `Name: ${name}\nProject: ${projectType}\nBudget: ${budget}\nTimeline: ${timeline}\nEmail: ${email}\n\nDetails:\n${brief}`;
-                const mailto = `mailto:arlotechweb@gmail.com?subject=${encodeURIComponent("New project enquiry from " + (name || "website"))}&body=${encodeURIComponent(body)}`;
+                const mailto = `mailto:contact@arlotech.com.ng?subject=${encodeURIComponent("New project enquiry from " + (name || "website"))}&body=${encodeURIComponent(body)}`;
                 window.open(mailto, "_self");
               }}
               className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-emerald-400 to-amber-300 px-8 py-3.5 text-sm font-bold text-[#07100f] shadow-lg hover:-translate-y-0.5 transition"
@@ -150,8 +150,8 @@ export default function Contact() {
               <p>Lagos, Nigeria</p>
               <p>
                 <span className="font-semibold text-foreground">Email: </span>
-                <a href="mailto:arlotechweb@gmail.com" className="text-foreground hover:text-emerald-400 transition">
-                  arlotechweb@gmail.com
+                <a href="mailto:contact@arlotech.com.ng" className="text-foreground hover:text-emerald-400 transition">
+                  contact@arlotech.com.ng
                 </a>
               </p>
             </div>

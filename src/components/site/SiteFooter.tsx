@@ -26,7 +26,7 @@ export function SiteFooter() {
           {/* Social links */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <a
-              href="mailto:arlotechweb@gmail.com"
+              href="mailto:contact@arlotech.com.ng"
               aria-label="Email"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-red-950/40 text-red-400 transition hover:border-red-400"
             >
@@ -84,8 +84,8 @@ export function SiteFooter() {
         <div className="space-y-4">
           <div className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">Get in Touch</div>
           <div className="space-y-3 text-sm">
-            <a href="mailto:arlotechweb@gmail.com" className="block text-foreground hover:text-emerald-400 transition">
-              arlotechweb@gmail.com
+            <a href="mailto:contact@arlotech.com.ng" className="block text-foreground hover:text-emerald-400 transition">
+              contact@arlotech.com.ng
             </a>
             <p className="text-muted-foreground leading-6">
               Lagos, Nigeria

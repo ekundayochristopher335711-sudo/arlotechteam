@@ -71,8 +71,8 @@ function ProjectSection({ project, index }: { project: (typeof projects)[0]; ind
           <div className="absolute inset-0 bg-linear-to-l from-background/60 via-transparent to-transparent pointer-events-none z-10" />
         )}
 
-        {/* iframe — hidden until loaded, skipped for the NEC project or if screenshot-only mode is active */}
-        {!iframeError && !useScreenshotOnly && (
+        {/* iframe — hidden until loaded */}
+        {!iframeError && (
           <iframe
             src={project.href}
             title={project.title}
@@ -83,12 +83,6 @@ function ProjectSection({ project, index }: { project: (typeof projects)[0]; ind
             }`}
             sandbox="allow-scripts allow-same-origin allow-forms"
           />
-        )}
-
-        {useScreenshotOnly && (
-          <div className="absolute top-4 left-4 z-30 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-xs font-semibold text-white/90">
-            Screenshot preview
-          </div>
         )}
 
         {/* Fallback: no screenshot AND iframe blocked */}
