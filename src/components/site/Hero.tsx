@@ -90,15 +90,15 @@ export default function Hero() {
 
       {/* Stats */}
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 pb-8 lg:pb-16 w-full">
-        <div className="grid grid-cols-4 gap-2 sm:gap-6 lg:gap-10 lg:max-w-2xl">
+        <div className="flex items-center justify-between max-w-xl lg:max-w-2xl gap-3">
           {stats.map((item) => (
-            <div key={item.label} className="flex items-center gap-1.5 sm:gap-3 lg:gap-4">
-              <div className="shrink-0 rounded-full border border-green-500/30 bg-green-500/10 p-1.5 sm:p-2.5 lg:p-3">
-                <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-green-300" />
+            <div key={item.label} className="flex items-center gap-2 lg:gap-3">
+              <div className="shrink-0 rounded-full border border-green-500/30 bg-green-500/10 p-2 lg:p-3">
+                <item.icon className="h-4 w-4 lg:h-5 lg:w-5 text-green-300" />
               </div>
-              <div>
-                <h3 className="text-sm sm:text-xl lg:text-2xl font-bold leading-none">{item.number}</h3>
-                <p className="text-[8px] sm:text-[10px] lg:text-xs text-zinc-400 leading-tight mt-0.5">{item.label}</p>
+              <div className="min-w-0">
+                <h3 className="text-base lg:text-2xl font-bold leading-none">{item.number}</h3>
+                <p className="text-[9px] lg:text-xs text-zinc-400 leading-tight mt-0.5">{item.label}</p>
               </div>
             </div>
           ))}
