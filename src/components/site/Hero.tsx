@@ -17,33 +17,42 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#07120C] text-white">
-      {/* Background */}
+    <section className="relative min-h-screen overflow-hidden bg-[#07120C] text-white">
+      {/* Full background image */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#0f3d27,transparent_55%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#07120c,#081710)]" />
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
+        <img
+          src="/building.jpg"
+          alt=""
+          className="h-full w-full object-cover"
         />
-        <div className="absolute -left-32 top-20 h-[450px] w-[450px] rounded-full bg-green-500/20 blur-[140px]" />
-        <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-yellow-400/10 blur-[150px]" />
+        {/* Dark overlay — heavier on left for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07120C] via-[#07120C]/85 to-[#07120C]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07120C] via-transparent to-[#07120C]/50" />
       </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-20 px-6 py-24 lg:flex-row">
-        {/* LEFT */}
+      {/* Grid overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      {/* Glow effects */}
+      <div className="absolute -left-32 top-20 h-[450px] w-[450px] rounded-full bg-green-500/10 blur-[140px]" />
+
+      {/* Content */}
+      <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-20 lg:pt-40 lg:pb-28">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex-1"
+          className="max-w-2xl"
         >
-          <span className="inline-flex rounded-full border border-green-500/30 bg-green-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[.3em] text-green-300">
-            <span className="mr-2 mt-0.5 inline-block h-2 w-2 rounded-full bg-green-400" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[.25em] text-green-300">
+            <span className="h-2 w-2 rounded-full bg-green-400" />
             Digital Solutions That Drive Growth
           </span>
 
@@ -57,7 +66,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="mt-8 max-w-xl text-lg leading-8 text-zinc-300">
+          <p className="mt-8 max-w-lg text-base leading-7 text-zinc-300/90 lg:text-lg lg:leading-8">
             We design and develop modern websites, web applications,
             and digital solutions that help businesses grow, connect
             with their audience, and stay ahead of the competition.
@@ -80,7 +89,7 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 gap-8 lg:grid-cols-4">
+          <div className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-10">
             {stats.map((item) => (
               <div key={item.label} className="flex items-center gap-4">
                 <div className="rounded-full border border-green-500/30 bg-green-500/10 p-3">
@@ -88,46 +97,11 @@ export default function Hero() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">{item.number}</h3>
-                  <p className="text-sm text-zinc-400">{item.label}</p>
+                  <p className="text-xs text-zinc-400">{item.label}</p>
                 </div>
               </div>
             ))}
           </div>
-        </motion.div>
-
-        {/* RIGHT */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative flex-1"
-        >
-          <div className="absolute -left-20 top-20 h-80 w-80 rounded-full border border-green-500/20" />
-          <div className="absolute right-10 top-0 h-[500px] w-[500px] rounded-full border border-yellow-300/10" />
-          <div className="absolute left-10 bottom-0 h-72 w-72 rounded-full bg-green-500/20 blur-[120px]" />
-
-          <div className="relative overflow-hidden rounded-[42px] border border-white/10 shadow-[0_40px_120px_rgba(0,255,120,.15)]">
-            <img
-              src="/building.jpg"
-              alt="Modern architecture"
-              className="h-[650px] w-full object-cover"
-            />
-          </div>
-
-          <motion.div
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 5 }}
-            className="absolute -left-8 bottom-10 rounded-3xl border border-green-500/20 bg-[#0b1d13]/90 p-6 backdrop-blur-xl"
-          >
-            <h3 className="text-lg font-bold">
-              Building
-              <br />
-              Digital Futures
-            </h3>
-            <div className="mt-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-green-400 to-yellow-300">
-              <Rocket className="text-black" />
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
