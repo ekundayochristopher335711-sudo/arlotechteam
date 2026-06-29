@@ -1,33 +1,32 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Contact from "./pages/Contact";
-import Infrastructure from "./pages/Infrastructure";
-import Process from "./pages/Process";
-import Insights from "./pages/Insights";
-import Careers from "./pages/Careers";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import Work from "./pages/Work";
-import NotFound from "./pages/NotFound";
+
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Infrastructure = lazy(() => import("./pages/Infrastructure"));
+const Process = lazy(() => import("./pages/Process"));
+const Work = lazy(() => import("./pages/Work"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/services" element={<Services />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/infrastructure" element={<Infrastructure />} />
-      <Route path="/process" element={<Process />} />
-      <Route path="/insights" element={<Insights />} />
-      <Route path="/careers" element={<Careers />} />
-      <Route path="/work" element={<Work />} />
-      <Route path="/privacy" element={<Privacy />} />
-      <Route path="/terms" element={<Terms />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <Suspense fallback={null}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/infrastructure" element={<Infrastructure />} />
+        <Route path="/process" element={<Process />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 }

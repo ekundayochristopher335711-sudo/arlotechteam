@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 
 const stats = [
-  { icon: Rocket, number: "50+", label: "Projects Delivered" },
-  { icon: Users, number: "30+", label: "Happy Clients" },
+  { icon: Rocket, number: "20+", label: "Projects Delivered" },
+  { icon: Users, number: "15+", label: "Happy Clients" },
   { icon: BadgeCheck, number: "3+", label: "Years Experience" },
   { icon: Headphones, number: "24/7", label: "Support" },
 ];

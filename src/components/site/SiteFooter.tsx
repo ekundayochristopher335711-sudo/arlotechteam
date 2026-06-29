@@ -26,6 +26,18 @@ export function SiteFooter() {
           {/* Social links */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <a
+              href="https://wa.me/2348166419332"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-emerald-950/60 text-emerald-400 transition hover:border-emerald-400"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.148-1.758-.867-2.03-.967-.273-.1-.472-.148-.671.149-.197.297-.766.967-.94 1.165-.173.198-.347.223-.644.075-.297-.148-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.1-.198.05-.372-.025-.52-.075-.148-.671-1.612-.92-2.207-.242-.579-.487-.5-.671-.51-.173-.008-.372-.01-.57-.01s-.52.075-.792.372c-.273.297-1.04 1.016-1.04 2.475 0 1.458 1.064 2.872 1.213 3.069.149.198 2.095 3.2 5.08 4.487.71.307 1.263.49 1.694.627.712.227 1.36.195 1.872.118.571-.086 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z" />
+                <path d="M21.875 11.997c0 5.495-4.46 9.956-9.956 9.956-1.764 0-3.412-.46-4.87-1.263L3 21.998l1.33-4.041A9.946 9.946 0 011.997 11.997c0-5.495 4.461-9.956 9.958-9.956 5.496 0 9.955 4.461 9.955 9.956z" stroke="currentColor" strokeWidth="1.5" fill="none" />
+              </svg>
+            </a>
+            <a
               href="mailto:contact@arlotech.com.ng"
               aria-label="Email"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-red-950/40 text-red-400 transition hover:border-red-400"
@@ -86,6 +98,9 @@ export function SiteFooter() {
           <div className="space-y-3 text-sm">
             <a href="mailto:contact@arlotech.com.ng" className="block text-foreground hover:text-emerald-400 transition">
               contact@arlotech.com.ng
+            </a>
+            <a href="https://wa.me/2348166419332" target="_blank" rel="noreferrer" className="block text-foreground hover:text-emerald-400 transition">
+              +234 816 641 9332 (WhatsApp)
             </a>
             <p className="text-muted-foreground leading-6">
               Lagos, Nigeria

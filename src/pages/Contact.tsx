@@ -154,6 +154,12 @@ export default function Contact() {
                   contact@arlotech.com.ng
                 </a>
               </p>
+              <p>
+                <span className="font-semibold text-foreground">WhatsApp: </span>
+                <a href="https://wa.me/2348166419332" target="_blank" rel="noreferrer" className="text-foreground hover:text-emerald-400 transition">
+                  +234 816 641 9332
+                </a>
+              </p>
             </div>
           </div>
         </div>

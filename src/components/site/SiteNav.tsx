@@ -85,7 +85,7 @@ export function SiteNav() {
 
             {dropdownOpen && (
               <div
-                className="absolute left-0 top-full mt-2 w-44 overflow-hidden rounded-2xl border border-border/50 bg-background/95 shadow-xl backdrop-blur-xl"
+                className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-48 rounded-xl border border-emerald-500/20 bg-[#0b1a12] p-2 shadow-2xl shadow-black/40 backdrop-blur-xl"
                 onMouseEnter={openDropdown}
                 onMouseLeave={scheduleClose}
               >
@@ -95,10 +95,10 @@ export function SiteNav() {
                     to={item.to}
                     onClick={() => setDropdownOpen(false)}
                     className={({ isActive }) =>
-                      `block px-5 py-3 text-sm transition-colors ${
+                      `block rounded-lg px-4 py-2.5 text-sm transition-colors ${
                         isActive
-                          ? "bg-accent/10 text-accent"
-                          : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
+                          ? "bg-emerald-500/15 text-emerald-400"
+                          : "text-zinc-300 hover:bg-white/5 hover:text-white"
                       }`
                     }
                   >
