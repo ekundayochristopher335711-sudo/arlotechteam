@@ -52,32 +52,26 @@ export default function Home() {
     <PageLayout>
       <Hero />
 
-      {/* Dark → White transition */}
-      <div className="h-32 bg-gradient-to-b from-[#07120C] to-white" />
-
       {/* ── Services ─────────────────────────────────────── */}
-      <section className="bg-white py-20">
+      <section className="bg-[#0a1f14] py-24 border-t border-emerald-500/10">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-600">What We Do</p>
-            <h2 className="mt-2 text-4xl font-bold text-[#111]">Everything you need to build a strong online presence.</h2>
-            <p className="mt-4 text-base leading-7 text-[#555] max-w-2xl">
+          <div className="mb-14 text-center">
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-emerald-400">What We Do</p>
+            <h2 className="mt-3 text-3xl md:text-4xl font-bold text-white">Everything you need to build a strong online presence.</h2>
+            <p className="mt-4 text-base leading-7 text-zinc-400 max-w-2xl mx-auto">
               From a brand new website to a fully custom web app — we handle design, development, and launch. You stay focused on running your business.
             </p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {services.map((service) => (
-              <div key={service.name} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-md hover:-translate-y-1 hover:shadow-lg transition">
-                <h3 className="text-lg font-semibold text-[#111]">{service.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#666]">{service.description}</p>
+              <div key={service.name} className="group rounded-2xl border border-emerald-500/15 bg-[#0d2a1b] p-6 transition hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/5">
+                <h3 className="text-lg font-semibold text-white">{service.name}</h3>
+                <p className="mt-3 text-sm leading-6 text-zinc-400">{service.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* White → Dark transition */}
-      <div className="h-32 bg-gradient-to-b from-white to-[#07120C]" />
 
       {/* ── Our Work ─────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 py-20">
