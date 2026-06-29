@@ -14,6 +14,8 @@ const topLinks = [
 ] as const;
 
 const afterLinks = [
+  { to: "/work", label: "Portfolio" },
+  { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
