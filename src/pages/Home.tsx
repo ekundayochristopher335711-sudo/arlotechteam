@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { PageLayout } from "../components/site/PageLayout";
 import { projects, type Project } from "../data/projects";
 import { useSEO } from "../lib/useSEO";
+import Hero from "../components/site/Hero";
 
 const services = [
   { name: "Website Design & Development", description: "Custom-built websites that look great, load fast, and turn visitors into customers." },
@@ -49,47 +50,7 @@ export default function Home() {
 
   return (
     <PageLayout>
-      {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-24">
-        <div className="absolute inset-x-0 top-0 h-130 bg-linear-to-b from-emerald-500/10 via-amber-300/5 to-transparent pointer-events-none" />
-        <div className="absolute left-1/2 top-16 -translate-x-1/2 h-80 w-175 rounded-full bg-emerald-400/15 blur-3xl pointer-events-none" />
-
-        <div className="relative mx-auto max-w-7xl px-6 pb-28 pt-16">
-          <div className="max-w-3xl space-y-8">
-            <div className="space-y-5">
-              <p className="section-label">Web Design & Development Studio</p>
-              <h1 className="text-5xl md:text-6xl xl:text-7xl font-black tracking-tighter leading-[1.05] text-foreground">
-                We build websites that work as hard as you do.
-              </h1>
-              <p className="text-lg leading-8 text-muted-foreground max-w-xl">
-                Arlotech is a small team of designers and developers. We build custom websites, web apps, and online stores for businesses that want something that looks great and actually gets results.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact#schedule" className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-emerald-500 to-amber-400 px-8 py-3.5 text-sm font-bold text-[#07100f] shadow-lg hover:-translate-y-0.5 transition">
-                Start a Project
-              </Link>
-              <Link to="/contact#schedule" className="inline-flex items-center justify-center rounded-full border border-border/60 px-8 py-3.5 text-sm font-semibold text-foreground hover:border-emerald-400 hover:text-emerald-400 transition">
-                Book a Free Call
-              </Link>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3 pt-4">
-              {[
-                { label: "Projects Delivered", value: "20+" },
-                { label: "Happy Clients", value: "18" },
-                { label: "Response Time", value: "< 24 hrs" },
-              ].map((stat) => (
-                <div key={stat.label} className="glass rounded-2xl border border-border/40 p-5 shadow-panel">
-                  <div className="text-3xl font-bold text-foreground">{stat.value}</div>
-                  <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* ── Services ─────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 py-20">
