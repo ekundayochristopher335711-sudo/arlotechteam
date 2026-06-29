@@ -21,7 +21,7 @@ export default function Hero() {
       {/* Full background image */}
       <div className="absolute inset-0">
         <img
-          src="/building.jpg"
+          src="/building.png"
           alt=""
           className="h-full w-full object-cover"
         />
