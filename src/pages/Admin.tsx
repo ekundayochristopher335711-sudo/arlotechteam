@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSEO } from "../lib/useSEO";
 import { categories } from "../data/posts";
-import { Trash2, Edit3, Plus, LogOut, Save, X, Eye } from "lucide-react";
+import { Trash2, Edit3, Plus, LogOut, Save, X, Eye, Upload, Image as ImageIcon } from "lucide-react";
 
 const API = "/api/posts.php";
+const AUTH_API = "/api/auth.php";
+const UPLOAD_API = "/api/upload.php";
 
 type Post = {
   slug: string;
@@ -14,10 +16,11 @@ type Post = {
   readTime: string;
   author: string;
   featured: boolean;
+  image?: string;
   content: string[];
 };
 
-const emptyPost: Omit<Post, "slug"> & { slug: string } = {
+const emptyPost: Post = {
   slug: "",
   title: "",
   excerpt: "",
@@ -26,19 +29,23 @@ const emptyPost: Omit<Post, "slug"> & { slug: string } = {
   readTime: "5 min read",
   author: "Christopher S.",
   featured: false,
+  image: "",
   content: [""],
 };
 
 export default function Admin() {
   const [password, setPassword] = useState("");
-  const [authed, setAuthed] = useState(() => !!sessionStorage.getItem("admin_token"));
-  const [token, setToken] = useState(() => sessionStorage.getItem("admin_token") || "");
+  const [authed, setAuthed] = useState(false);
+  const [token, setToken] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
   const [editing, setEditing] = useState<Post | null>(null);
   const [creating, setCreating] = useState(false);
-  const [form, setForm] = useState(emptyPost);
+  const [form, setForm] = useState<Post>(emptyPost);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
 
   useSEO({ title: "Admin", description: "Blog admin panel", path: "/admin" });
 
@@ -58,15 +65,29 @@ export default function Admin() {
     if (authed) fetchPosts();
   }, [authed]);
 
-  function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-    setToken(password);
-    sessionStorage.setItem("admin_token", password);
-    setAuthed(true);
+    setLoginError("");
+    setLoading(true);
+    try {
+      const res = await fetch(AUTH_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+      if (res.ok) {
+        setToken(password);
+        setAuthed(true);
+      } else {
+        setLoginError("Wrong password. Try again.");
+      }
+    } catch {
+      setLoginError("Can't connect to server. Make sure you're on arlotech.com.ng, not Vercel.");
+    }
+    setLoading(false);
   }
 
   function logout() {
-    sessionStorage.removeItem("admin_token");
     setAuthed(false);
     setToken("");
     setPassword("");
@@ -107,6 +128,42 @@ export default function Admin() {
     setForm({ ...form, content: form.content.filter((_, i) => i !== index) });
   }
 
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      setStatus("Image must be under 5MB.");
+      return;
+    }
+
+    setUploading(true);
+    setStatus("Uploading image...");
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const res = await fetch(UPLOAD_API, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setForm((prev) => ({ ...prev, image: data.url }));
+        setStatus("Image uploaded!");
+      } else {
+        const err = await res.json();
+        setStatus(err.error || "Upload failed.");
+      }
+    } catch {
+      setStatus("Upload failed — check your connection.");
+    }
+    setUploading(false);
+  }
+
   async function handleSave(e: React.FormEvent) {
     e.preventDefault();
     if (!form.title.trim() || form.content.every((p) => !p.trim())) {
@@ -117,24 +174,17 @@ export default function Admin() {
     setLoading(true);
     try {
       const cleanContent = form.content.filter((p) => p.trim());
+      const payload = { ...form, content: cleanContent };
 
       if (creating) {
-        const res = await fetch(API, {
-          method: "POST",
-          headers,
-          body: JSON.stringify({ ...form, content: cleanContent }),
-        });
-        if (res.status === 401) { setStatus("Wrong password. Check your admin password."); setLoading(false); return; }
-        if (!res.ok) { setStatus("Failed to create post."); setLoading(false); return; }
-        setStatus("Post created!");
-      } else if (editing) {
-        const res = await fetch(API, {
-          method: "PUT",
-          headers,
-          body: JSON.stringify({ ...form, content: cleanContent }),
-        });
+        const res = await fetch(API, { method: "POST", headers, body: JSON.stringify(payload) });
         if (res.status === 401) { setStatus("Wrong password."); setLoading(false); return; }
-        if (!res.ok) { setStatus("Failed to update post."); setLoading(false); return; }
+        if (!res.ok) { setStatus("Failed to create post."); setLoading(false); return; }
+        setStatus("Post published!");
+      } else if (editing) {
+        const res = await fetch(API, { method: "PUT", headers, body: JSON.stringify(payload) });
+        if (res.status === 401) { setStatus("Wrong password."); setLoading(false); return; }
+        if (!res.ok) { setStatus("Failed to update."); setLoading(false); return; }
         setStatus("Post updated!");
       }
 
@@ -142,7 +192,7 @@ export default function Admin() {
       setCreating(false);
       setEditing(null);
     } catch {
-      setStatus("Network error — is the API accessible?");
+      setStatus("Network error.");
     }
     setLoading(false);
   }
@@ -158,7 +208,7 @@ export default function Admin() {
     }
   }
 
-  // Login screen
+  // ─── Login ───
   if (!authed) {
     return (
       <div className="min-h-screen bg-[#07120C] flex items-center justify-center px-6">
@@ -175,18 +225,21 @@ export default function Admin() {
             required
             className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-5 py-3.5 text-sm text-white outline-none focus:border-emerald-400"
           />
+          {loginError && <p className="text-sm text-red-400 text-center">{loginError}</p>}
           <button
             type="submit"
-            className="w-full rounded-xl bg-gradient-to-r from-emerald-400 to-yellow-300 py-3.5 text-sm font-bold text-[#07100f] hover:scale-[1.02] transition"
+            disabled={loading}
+            className="w-full rounded-xl bg-linear-to-r from-emerald-400 to-yellow-300 py-3.5 text-sm font-bold text-[#07100f] hover:scale-[1.02] transition disabled:opacity-50"
           >
-            Log In
+            {loading ? "Checking..." : "Log In"}
           </button>
+          <p className="text-xs text-zinc-600 text-center">Admin panel only works on arlotech.com.ng (requires PHP)</p>
         </form>
       </div>
     );
   }
 
-  // Editor form
+  // ─── Editor ───
   if (creating || editing) {
     return (
       <div className="min-h-screen bg-[#07120C] text-white">
@@ -199,6 +252,7 @@ export default function Admin() {
           </div>
 
           <form onSubmit={handleSave} className="space-y-6">
+            {/* Title */}
             <div>
               <label className="block text-xs font-semibold text-zinc-400 mb-2">Title</label>
               <input
@@ -209,6 +263,7 @@ export default function Admin() {
               />
             </div>
 
+            {/* Excerpt */}
             <div>
               <label className="block text-xs font-semibold text-zinc-400 mb-2">Excerpt (short summary)</label>
               <input
@@ -219,6 +274,49 @@ export default function Admin() {
               />
             </div>
 
+            {/* Image upload */}
+            <div>
+              <label className="block text-xs font-semibold text-zinc-400 mb-2">Cover Image</label>
+              <div className="space-y-3">
+                {form.image && (
+                  <div className="relative rounded-xl overflow-hidden border border-zinc-700">
+                    <img src={form.image} alt="Cover" className="w-full h-48 object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => setForm({ ...form, image: "" })}
+                      className="absolute top-2 right-2 rounded-full bg-black/60 p-1.5 text-white hover:bg-red-500 transition"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                )}
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => fileRef.current?.click()}
+                    disabled={uploading}
+                    className="flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-zinc-300 hover:border-emerald-400 hover:text-emerald-400 transition disabled:opacity-50"
+                  >
+                    <Upload size={14} /> {uploading ? "Uploading..." : "Upload Image"}
+                  </button>
+                  <input
+                    ref={fileRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                  />
+                  <input
+                    value={form.image || ""}
+                    onChange={(e) => setForm({ ...form, image: e.target.value })}
+                    className="flex-1 rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-white outline-none focus:border-emerald-400"
+                    placeholder="Or paste image URL"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Category + Author */}
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-zinc-400 mb-2">Category</label>
@@ -242,6 +340,7 @@ export default function Admin() {
               </div>
             </div>
 
+            {/* Read time + Date */}
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-zinc-400 mb-2">Read Time</label>
@@ -263,6 +362,7 @@ export default function Admin() {
               </div>
             </div>
 
+            {/* Featured */}
             <div className="flex items-center gap-3">
               <input
                 type="checkbox"
@@ -271,14 +371,12 @@ export default function Admin() {
                 onChange={(e) => setForm({ ...form, featured: e.target.checked })}
                 className="h-4 w-4 accent-emerald-400"
               />
-              <label htmlFor="featured" className="text-sm text-zinc-300">Featured article (shows as large card on blog page)</label>
+              <label htmlFor="featured" className="text-sm text-zinc-300">Featured article</label>
             </div>
 
-            {/* Content paragraphs */}
+            {/* Content */}
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-2">
-                Content — each box is one paragraph
-              </label>
+              <label className="block text-xs font-semibold text-zinc-400 mb-2">Content — each box is one paragraph</label>
               <div className="space-y-3">
                 {form.content.map((para, i) => (
                   <div key={i} className="flex gap-2">
@@ -313,7 +411,7 @@ export default function Admin() {
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 to-yellow-300 px-8 py-3.5 text-sm font-bold text-[#07100f] hover:scale-[1.02] transition disabled:opacity-50"
+              className="flex items-center gap-2 rounded-xl bg-linear-to-r from-emerald-400 to-yellow-300 px-8 py-3.5 text-sm font-bold text-[#07100f] hover:scale-[1.02] transition disabled:opacity-50"
             >
               <Save size={16} /> {loading ? "Saving..." : creating ? "Publish Post" : "Save Changes"}
             </button>
@@ -323,7 +421,7 @@ export default function Admin() {
     );
   }
 
-  // Post list
+  // ─── Post list ───
   return (
     <div className="min-h-screen bg-[#07120C] text-white">
       <div className="mx-auto max-w-4xl px-6 py-12">
@@ -335,7 +433,7 @@ export default function Admin() {
           <div className="flex items-center gap-3">
             <button
               onClick={startCreate}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 to-yellow-300 px-6 py-3 text-sm font-bold text-[#07100f] hover:scale-105 transition"
+              className="flex items-center gap-2 rounded-xl bg-linear-to-r from-emerald-400 to-yellow-300 px-6 py-3 text-sm font-bold text-[#07100f] hover:scale-105 transition"
             >
               <Plus size={16} /> New Post
             </button>
@@ -343,7 +441,7 @@ export default function Admin() {
               onClick={logout}
               className="flex items-center gap-2 rounded-xl border border-zinc-700 px-4 py-3 text-sm text-zinc-400 hover:text-white hover:border-zinc-500 transition"
             >
-              <LogOut size={16} /> Logout
+              <LogOut size={16} />
             </button>
           </div>
         </div>
@@ -354,9 +452,21 @@ export default function Admin() {
           {posts.map((post) => (
             <div
               key={post.slug}
-              className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5 transition hover:border-zinc-700"
+              className="flex items-center gap-4 rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4 transition hover:border-zinc-700"
             >
-              <div className="flex-1 min-w-0 mr-4">
+              {/* Thumbnail */}
+              <div className="shrink-0 h-16 w-16 rounded-xl overflow-hidden bg-zinc-800">
+                {post.image ? (
+                  <img src={post.image} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  <div className="h-full w-full flex items-center justify-center text-zinc-600">
+                    <ImageIcon size={20} />
+                  </div>
+                )}
+              </div>
+
+              {/* Info */}
+              <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 text-xs text-emerald-400">
                     {post.category}
@@ -370,25 +480,16 @@ export default function Admin() {
                 <h3 className="font-semibold text-white truncate">{post.title}</h3>
                 <p className="text-xs text-zinc-500 mt-1">{post.date} · {post.readTime} · {post.author}</p>
               </div>
+
+              {/* Actions */}
               <div className="flex items-center gap-2 shrink-0">
-                <a
-                  href={`/blog/${post.slug}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-lg border border-zinc-700 p-2.5 text-zinc-400 hover:text-white hover:border-zinc-500 transition"
-                >
+                <a href={`/blog/${post.slug}`} target="_blank" rel="noreferrer" className="rounded-lg border border-zinc-700 p-2.5 text-zinc-400 hover:text-white hover:border-zinc-500 transition">
                   <Eye size={15} />
                 </a>
-                <button
-                  onClick={() => startEdit(post)}
-                  className="rounded-lg border border-zinc-700 p-2.5 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/30 transition"
-                >
+                <button onClick={() => startEdit(post)} className="rounded-lg border border-zinc-700 p-2.5 text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/30 transition">
                   <Edit3 size={15} />
                 </button>
-                <button
-                  onClick={() => handleDelete(post.slug)}
-                  className="rounded-lg border border-zinc-700 p-2.5 text-zinc-400 hover:text-red-400 hover:border-red-500/30 transition"
-                >
+                <button onClick={() => handleDelete(post.slug)} className="rounded-lg border border-zinc-700 p-2.5 text-zinc-400 hover:text-red-400 hover:border-red-500/30 transition">
                   <Trash2 size={15} />
                 </button>
               </div>

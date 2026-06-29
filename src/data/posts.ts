@@ -7,6 +7,7 @@ export type Post = {
   readTime: string;
   author: string;
   featured?: boolean;
+  image?: string;
   content: string[];
 };
 

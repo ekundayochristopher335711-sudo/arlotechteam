@@ -112,9 +112,13 @@ export default function Blog() {
             className="group block overflow-hidden rounded-3xl border border-border/30 bg-[#0f1f1a] shadow-xl transition hover:-translate-y-1 hover:border-emerald-500/30"
           >
             <div className="grid lg:grid-cols-2">
-              {/* Left — gradient visual */}
-              <div className="relative h-64 lg:h-auto bg-gradient-to-br from-emerald-600/30 via-emerald-900/40 to-amber-900/20 flex items-center justify-center p-10">
-                <div className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-300">
+              {/* Left — cover */}
+              <div className="relative h-64 lg:h-auto bg-gradient-to-br from-emerald-600/30 via-emerald-900/40 to-amber-900/20 overflow-hidden">
+                {featured.image && (
+                  <img src={featured.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                )}
+                <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#0f1f1a]/60" />
+                <div className="absolute top-4 left-4 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-300">
                   Featured
                 </div>
               </div>
@@ -172,9 +176,13 @@ export default function Blog() {
                 to={`/blog/${post.slug}`}
                 className="group overflow-hidden rounded-2xl border border-border/30 bg-[#0f1f1a] shadow-lg transition hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-emerald-500/5"
               >
-                {/* Top accent */}
-                <div className="h-44 bg-gradient-to-br from-emerald-800/30 via-emerald-950/40 to-background flex items-end p-6">
-                  <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">
+                {/* Cover */}
+                <div className="relative h-44 bg-gradient-to-br from-emerald-800/30 via-emerald-950/40 to-background overflow-hidden">
+                  {post.image && (
+                    <img src={post.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1f1a] via-transparent to-transparent" />
+                  <span className="absolute bottom-4 left-5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">
                     {post.category}
                   </span>
                 </div>

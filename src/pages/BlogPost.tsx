@@ -70,6 +70,13 @@ export default function BlogPost() {
           <span>{post.date}</span>
         </div>
 
+        {/* Cover image */}
+        {post.image && (
+          <div className="mt-8 overflow-hidden rounded-2xl border border-zinc-800">
+            <img src={post.image} alt={post.title} className="w-full h-64 sm:h-80 object-cover" />
+          </div>
+        )}
+
         {/* Content */}
         <div className="mt-10 space-y-6">
           {post.content.map((paragraph, i) => (
