@@ -34,6 +34,10 @@ function checkAuth() {
     if (!$auth && isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
         $auth = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
     }
+    // Set by the RewriteRule in .htaccess for cPanel Apache
+    if (!$auth && isset($_SERVER['REDIRECT_HTTP_HTTP_AUTHORIZATION'])) {
+        $auth = $_SERVER['REDIRECT_HTTP_HTTP_AUTHORIZATION'];
+    }
     if ($auth !== 'Bearer ' . ADMIN_PASSWORD) {
         http_response_code(401);
         echo json_encode(['error' => 'Unauthorized']);
