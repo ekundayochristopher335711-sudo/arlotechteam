@@ -17,8 +17,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 function checkAuth() {
-    $headers = getallheaders();
-    $auth = isset($headers['Authorization']) ? $headers['Authorization'] : '';
+    $auth = '';
+    // Try getallheaders() first (case-insensitive search)
+    if (function_exists('getallheaders')) {
+        foreach (getallheaders() as $key => $value) {
+            if (strtolower($key) === 'authorization') {
+                $auth = $value;
+                break;
+            }
+        }
+    }
+    // Fallback for PHP-FPM and some cPanel configs
+    if (!$auth && isset($_SERVER['HTTP_AUTHORIZATION'])) {
+        $auth = $_SERVER['HTTP_AUTHORIZATION'];
+    }
+    if (!$auth && isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+        $auth = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+    }
     if ($auth !== 'Bearer ' . ADMIN_PASSWORD) {
         http_response_code(401);
         echo json_encode(['error' => 'Unauthorized']);
