@@ -161,10 +161,10 @@ export default function Admin() {
     setStatus("Uploading image...");
     const formData = new FormData();
     formData.append("image", file);
+    formData.append("_token", token); // send as form field — avoids Authorization header issues on cPanel
     try {
       const res = await fetch(UPLOAD_API, {
         method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
         body: formData,
       });
       if (res.ok) {
