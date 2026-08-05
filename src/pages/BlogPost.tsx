@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { PageLayout } from "../components/site/PageLayout";
+import { BlogCover } from "../components/site/BlogCover";
 import { getPostBySlug, posts as staticPosts, type Post } from "../data/posts";
 import { useSEO } from "../lib/useSEO";
 import { ArrowLeft, ArrowRight, Clock, User, Tag } from "lucide-react";
@@ -71,11 +72,9 @@ export default function BlogPost() {
         </div>
 
         {/* Cover image */}
-        {post.image && (
-          <div className="mt-8 overflow-hidden rounded-2xl border border-zinc-800">
-            <img src={post.image} alt={post.title} className="w-full h-64 sm:h-80 object-cover" />
-          </div>
-        )}
+        <div className="mt-8 h-64 overflow-hidden rounded-2xl border border-zinc-800 sm:h-96">
+          <BlogCover slug={post.slug} image={post.image} alt={post.title} />
+        </div>
 
         {/* Content */}
         <div className="mt-10 space-y-6">
@@ -88,12 +87,9 @@ export default function BlogPost() {
 
         {/* Share / CTA */}
         <div className="mt-14 rounded-2xl border border-emerald-500/20 bg-[#0f1f1a] p-8 text-center">
-          <h3 className="text-xl font-bold text-foreground">
-            Need help with this?
-          </h3>
+          <h3 className="text-xl font-bold text-foreground">Need help with this?</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            We can help you put these ideas into action. Let's talk about your
-            project.
+            We can help you put these ideas into action. Let's talk about your project.
           </p>
           <Link
             to="/contact#schedule"
@@ -110,9 +106,7 @@ export default function BlogPost() {
               to={`/blog/${prevPost.slug}`}
               className="group rounded-2xl border border-border/30 p-6 transition hover:border-emerald-500/30"
             >
-              <span className="text-xs text-muted-foreground">
-                ← Previous
-              </span>
+              <span className="text-xs text-muted-foreground">← Previous</span>
               <p className="mt-2 text-sm font-semibold text-foreground group-hover:text-emerald-400 transition leading-snug">
                 {prevPost.title}
               </p>
@@ -125,9 +119,7 @@ export default function BlogPost() {
               to={`/blog/${nextPost.slug}`}
               className="group rounded-2xl border border-border/30 p-6 text-right transition hover:border-emerald-500/30"
             >
-              <span className="text-xs text-muted-foreground">
-                Next →
-              </span>
+              <span className="text-xs text-muted-foreground">Next →</span>
               <p className="mt-2 text-sm font-semibold text-foreground group-hover:text-emerald-400 transition leading-snug">
                 {nextPost.title}
               </p>

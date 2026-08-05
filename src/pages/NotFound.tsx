@@ -6,12 +6,18 @@ export default function NotFound() {
   return (
     <PageLayout>
       <div className="relative mx-auto flex min-h-[70vh] max-w-4xl flex-col items-center justify-center px-6 text-center">
-        <div className="absolute inset-0 grid-overlay opacity-30" />
-        <div className="relative rounded-4xl border border-border/50 bg-background/85 p-12 shadow-panel">
+        <img
+          src="/images/infrastructure-studio.jpg"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-background via-background/70 to-background/40" />
+        <div className="relative rounded-4xl border border-border/50 bg-background/85 p-12 shadow-panel backdrop-blur-xl">
           <div className="label-tech">CYBER ERROR</div>
           <h1 className="mt-6 text-7xl font-black tracking-[-0.06em] text-accent">404</h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            The signal dropped somewhere in the network. The page you requested is off the current deployment path.
+            The signal dropped somewhere in the network. The page you requested is off the current deployment
+            path.
           </p>
           <Link
             to="/"

@@ -24,7 +24,8 @@ const stack = [
 export default function Infrastructure() {
   useSEO({
     title: "Tech Stack — Tools We Use to Build Websites",
-    description: "The technologies Arlotech uses to build fast, reliable websites and web apps — React, TypeScript, Tailwind CSS, and more.",
+    description:
+      "The technologies Arlotech uses to build fast, reliable websites and web apps — React, TypeScript, Tailwind CSS, and more.",
     path: "/infrastructure",
   });
 
@@ -34,6 +35,8 @@ export default function Infrastructure() {
         kicker="TECH STACK"
         title="The tools we use to build your website."
         subtitle="Modern, reliable technologies that make your site fast, secure, and easy to maintain."
+        image="/images/infrastructure-studio.jpg"
+        imageAlt="A web engineering workspace showing code, deployment telemetry, and a responsive site"
       />
 
       <Section>
@@ -61,7 +64,10 @@ export default function Infrastructure() {
         <div className="glass rounded-3xl border border-border/40 p-10 shadow-panel">
           <h2 className="text-2xl font-bold text-foreground">Why does the tech stack matter?</h2>
           <p className="mt-4 text-sm leading-7 text-muted-foreground max-w-3xl">
-            The tools we use directly affect how fast your site loads, how secure it is, and how easy it is to update later. We pick modern, battle-tested technologies — not the trendiest thing, but what actually works best for your project. Every site we build loads fast, works on all devices, and is easy for us to maintain and improve over time.
+            The tools we use directly affect how fast your site loads, how secure it is, and how easy it is to
+            update later. We pick modern, battle-tested technologies — not the trendiest thing, but what
+            actually works best for your project. Every site we build loads fast, works on all devices, and is
+            easy for us to maintain and improve over time.
           </p>
         </div>
       </Section>

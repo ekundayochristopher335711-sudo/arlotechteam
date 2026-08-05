@@ -27,7 +27,7 @@ export function useSEO({ title, description, path = "" }: SEOProps) {
     document.title = fullTitle;
 
     setMeta("description", description);
-    setMeta("og:title", description, "property");
+    setMeta("og:title", fullTitle, "property");
     setMeta("og:description", description, "property");
     setMeta("og:url", url, "property");
     setMeta("twitter:title", fullTitle, "name");

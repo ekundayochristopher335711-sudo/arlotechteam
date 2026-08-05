@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Rocket,
-  Users,
-  BadgeCheck,
-  Headphones,
-} from "lucide-react";
+import { ArrowRight, Rocket, Users, BadgeCheck, Headphones } from "lucide-react";
 
 const stats = [
   { icon: Rocket, number: "20+", label: "Projects Delivered" },
@@ -20,8 +14,11 @@ export default function Hero() {
     <section className="relative min-h-[85vh] lg:min-h-screen overflow-hidden bg-[#07120C] text-white flex flex-col justify-between">
       {/* Background image */}
       <img
-        src="/building.png"
+        src="/images/hero-building.jpg"
         alt=""
+        width="1536"
+        height="1024"
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover object-right"
       />
 
@@ -64,9 +61,8 @@ export default function Hero() {
             </h1>
 
             <p className="mt-5 max-w-md text-[13px] sm:text-base leading-6 sm:leading-7 text-zinc-300 lg:text-lg lg:leading-8 lg:max-w-lg">
-              We design and develop modern websites, web applications,
-              and digital solutions that help businesses grow, connect
-              with their audience, and stay ahead of the competition.
+              We design and develop modern websites, web applications, and digital solutions that help
+              businesses grow, connect with their audience, and stay ahead of the competition.
             </p>
 
             <div className="mt-7 flex gap-3 sm:gap-4">

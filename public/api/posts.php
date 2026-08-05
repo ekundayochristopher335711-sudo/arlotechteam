@@ -59,6 +59,7 @@ if ($method === 'POST') {
         'readTime' => $input['readTime'] ?? '5 min read',
         'author' => $input['author'] ?? 'Christopher S.',
         'featured' => $input['featured'] ?? false,
+        'image' => $input['image'] ?? '',
         'content' => $input['content'],
     ];
 
@@ -91,6 +92,7 @@ if ($method === 'PUT') {
             if (isset($input['author'])) $post['author'] = $input['author'];
             if (isset($input['featured'])) $post['featured'] = $input['featured'];
             if (isset($input['content'])) $post['content'] = $input['content'];
+            if (array_key_exists('image', $input)) $post['image'] = $input['image'];
             $found = true;
             break;
         }

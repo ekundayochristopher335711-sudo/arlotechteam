@@ -5,7 +5,8 @@ import { useSEO } from "../lib/useSEO";
 export default function Contact() {
   useSEO({
     title: "Contact Us — Hire a Web Designer in Lagos",
-    description: "Get in touch with Arlotech for a free consultation. We build custom websites and web apps for businesses worldwide. Based in Lagos. Email: contact@arlotech.com.ng.",
+    description:
+      "Get in touch with Arlotech for a free consultation. We build custom websites and web apps for businesses worldwide. Based in Lagos. Email: contact@arlotech.com.ng.",
     path: "/contact",
   });
 
@@ -22,6 +23,8 @@ export default function Contact() {
         kicker="GET IN TOUCH"
         title="Tell us about your project — we'll get back to you within 24 hours."
         subtitle="Fill in the form below and we'll respond with a plan and a quote. No commitment, no pressure."
+        image="/images/contact-lagos-studio.jpg"
+        imageAlt="Arlotech's welcoming Lagos studio overlooking the city"
       />
 
       <Section className="grid gap-8 xl:grid-cols-[1.2fr_0.8fr]">
@@ -150,13 +153,21 @@ export default function Contact() {
               <p>Lagos, Nigeria</p>
               <p>
                 <span className="font-semibold text-foreground">Email: </span>
-                <a href="mailto:contact@arlotech.com.ng" className="text-foreground hover:text-emerald-400 transition">
+                <a
+                  href="mailto:contact@arlotech.com.ng"
+                  className="text-foreground hover:text-emerald-400 transition"
+                >
                   contact@arlotech.com.ng
                 </a>
               </p>
               <p>
                 <span className="font-semibold text-foreground">WhatsApp: </span>
-                <a href="https://wa.me/2348166419332" target="_blank" rel="noreferrer" className="text-foreground hover:text-emerald-400 transition">
+                <a
+                  href="https://wa.me/2348166419332"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-foreground hover:text-emerald-400 transition"
+                >
                   +234 816 641 9332
                 </a>
               </p>

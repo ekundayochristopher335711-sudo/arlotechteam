@@ -4,20 +4,50 @@ import { PageLayout, PageHero, Section } from "../components/site/PageLayout";
 import { useSEO } from "../lib/useSEO";
 
 const steps = [
-  { step: "Discovery Call", description: "We talk through your project — what you need, who it's for, and what success looks like. This call is free." },
-  { step: "Planning & Quote", description: "We put together a clear plan with timeline, deliverables, and pricing. No surprises — you know exactly what you're getting." },
-  { step: "Design", description: "We design the look and feel of your site. You review it, give feedback, and we refine until you're happy." },
-  { step: "Development", description: "We build the real thing — clean code, fast pages, mobile-friendly. You get updates along the way." },
-  { step: "Review & Testing", description: "We test everything across devices and browsers. You check it, request final changes, and sign off." },
-  { step: "Launch", description: "We take the site live. Domain, hosting, SSL — all handled. Your site is out in the world." },
-  { step: "Handover & Training", description: "We walk you through how to update content and manage your site. No tech knowledge needed." },
-  { step: "Ongoing Support", description: "After launch we're still here. Updates, fixes, changes — we've got you covered." },
+  {
+    step: "Discovery Call",
+    description:
+      "We talk through your project — what you need, who it's for, and what success looks like. This call is free.",
+  },
+  {
+    step: "Planning & Quote",
+    description:
+      "We put together a clear plan with timeline, deliverables, and pricing. No surprises — you know exactly what you're getting.",
+  },
+  {
+    step: "Design",
+    description:
+      "We design the look and feel of your site. You review it, give feedback, and we refine until you're happy.",
+  },
+  {
+    step: "Development",
+    description:
+      "We build the real thing — clean code, fast pages, mobile-friendly. You get updates along the way.",
+  },
+  {
+    step: "Review & Testing",
+    description:
+      "We test everything across devices and browsers. You check it, request final changes, and sign off.",
+  },
+  {
+    step: "Launch",
+    description: "We take the site live. Domain, hosting, SSL — all handled. Your site is out in the world.",
+  },
+  {
+    step: "Handover & Training",
+    description: "We walk you through how to update content and manage your site. No tech knowledge needed.",
+  },
+  {
+    step: "Ongoing Support",
+    description: "After launch we're still here. Updates, fixes, changes — we've got you covered.",
+  },
 ];
 
 export default function Process() {
   useSEO({
     title: "Our Process — How We Build Websites",
-    description: "From discovery call to launch — see how Arlotech designs and builds websites step by step. No surprises, just clear communication.",
+    description:
+      "From discovery call to launch — see how Arlotech designs and builds websites step by step. No surprises, just clear communication.",
     path: "/process",
   });
 
@@ -27,23 +57,23 @@ export default function Process() {
         kicker="OUR PROCESS"
         title="How we take your project from idea to live website."
         subtitle="A simple, clear process with no jargon. You always know what's happening and what comes next."
+        image="/images/process-workflow.jpg"
+        imageAlt="Website wireframes, responsive layouts, and development tools arranged across a studio table"
       />
 
       <Section>
-        <div className="space-y-6">
+        <div className="relative space-y-0 before:absolute before:bottom-8 before:left-7 before:top-8 before:w-px before:bg-linear-to-b before:from-emerald-400 before:via-emerald-400/40 before:to-transparent sm:before:left-9">
           {steps.map((item, index) => (
             <div
               key={item.step}
-              className="relative rounded-3xl border border-border/30 bg-background/75 p-8 shadow-panel transition hover:border-emerald-300/30 hover:-translate-y-1"
+              className="group relative border-b border-border/30 py-8 pl-20 transition sm:pl-24"
             >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-emerald-300/20 bg-emerald-400/10 text-xl font-bold text-emerald-300">
-                  {index + 1}
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-foreground">{item.step}</h3>
-                  <p className="mt-2 text-sm leading-7 text-muted-foreground max-w-2xl">{item.description}</p>
-                </div>
+              <div className="absolute left-0 top-7 z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-emerald-300/30 bg-[#0e1612] text-xl font-bold text-emerald-300 transition group-hover:border-amber-300 group-hover:text-amber-300 sm:h-18 sm:w-18">
+                {index + 1}
+              </div>
+              <div className="grid gap-3 sm:grid-cols-[220px_1fr] sm:gap-10">
+                <h3 className="text-xl font-bold text-foreground">{item.step}</h3>
+                <p className="text-sm leading-7 text-muted-foreground max-w-2xl">{item.description}</p>
               </div>
             </div>
           ))}

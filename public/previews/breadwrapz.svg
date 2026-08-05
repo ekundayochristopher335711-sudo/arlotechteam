@@ -8,7 +8,7 @@
   <rect width="1600" height="900" fill="url(#grad2)" />
   <rect x="80" y="80" width="1440" height="740" rx="40" fill="#3f1902" opacity="0.82" />
   <text x="120" y="220" fill="#fff7e7" font-family="Inter, sans-serif" font-size="64" font-weight="700">Breadwrapz</text>
-  <text x="120" y="320" fill="#ffe8c3" font-family="Inter, sans-serif" font-size="32">Food & lifestyle brand preview</text>
+  <text x="120" y="320" fill="#ffe8c3" font-family="Inter, sans-serif" font-size="32">Food &amp; lifestyle brand preview</text>
   <rect x="120" y="380" width="1260" height="360" rx="30" fill="#522204" stroke="#ffba86" stroke-width="4" />
   <rect x="160" y="420" width="560" height="120" rx="24" fill="#63310d" />
   <rect x="760" y="420" width="540" height="120" rx="24" fill="#7f3e13" />

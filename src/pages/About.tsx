@@ -31,22 +31,26 @@ const team = [
 const values = [
   {
     title: "We keep it simple",
-    description: "We don't use jargon or make things more complicated than they need to be. You'll always know what we're building and why.",
+    description:
+      "We don't use jargon or make things more complicated than they need to be. You'll always know what we're building and why.",
   },
   {
     title: "You work with us directly",
-    description: "No account managers, no handoffs. You speak directly with the person designing or building your site from day one.",
+    description:
+      "No account managers, no handoffs. You speak directly with the person designing or building your site from day one.",
   },
   {
     title: "We build things that last",
-    description: "We don't cut corners. Every site we build is clean, fast, and easy to maintain — so it keeps working long after launch.",
+    description:
+      "We don't cut corners. Every site we build is clean, fast, and easy to maintain — so it keeps working long after launch.",
   },
 ];
 
 export default function About() {
   useSEO({
     title: "About Us — Meet the Arlotech Team",
-    description: "Arlotech is a team of three designers and developers based in Lagos, Nigeria. We build custom websites and web apps for businesses that want real results.",
+    description:
+      "Arlotech is a team of three designers and developers based in Lagos, Nigeria. We build custom websites and web apps for businesses that want real results.",
     path: "/about",
   });
 
@@ -56,6 +60,8 @@ export default function About() {
         kicker="ABOUT US"
         title="A small team that takes your website seriously."
         subtitle="We're three designers and developers based in Lagos, Nigeria. We've been building websites for businesses around the world since 2022."
+        image="/images/team-studio.jpg"
+        imageAlt="The Arlotech team collaborating on a website design in their studio"
       />
 
       <Section>
@@ -64,13 +70,18 @@ export default function About() {
             <h2 className="text-3xl font-bold text-foreground">Who we are</h2>
             <div className="space-y-4 text-sm leading-7 text-muted-foreground">
               <p>
-                Arlotech started because we saw too many businesses stuck with websites that looked outdated, loaded slowly, or didn't reflect the quality of their actual work. We wanted to change that.
+                Arlotech started because we saw too many businesses stuck with websites that looked outdated,
+                loaded slowly, or didn't reflect the quality of their actual work. We wanted to change that.
               </p>
               <p>
-                We're a small studio — just three people — but that's a feature, not a bug. It means every project gets our full attention. When you hire us, you're not getting passed to a junior team. You get us.
+                We're a small studio — just three people — but that's a feature, not a bug. It means every
+                project gets our full attention. When you hire us, you're not getting passed to a junior team.
+                You get us.
               </p>
               <p>
-                We've built sites for law firms, churches, restaurants, fashion brands, and SaaS products — for clients in Nigeria, Europe, and beyond. Every project is different and we approach each one that way.
+                We've built sites for law firms, churches, restaurants, fashion brands, and SaaS products —
+                for clients in Nigeria, Europe, and beyond. Every project is different and we approach each
+                one that way.
               </p>
             </div>
             <Link
@@ -83,10 +94,7 @@ export default function About() {
 
           <div className="grid gap-4">
             {values.map((value) => (
-              <div
-                key={value.title}
-                className="glass rounded-2xl border border-border/40 p-6 shadow-panel"
-              >
+              <div key={value.title} className="glass rounded-2xl border border-border/40 p-6 shadow-panel">
                 <h3 className="font-semibold text-foreground">{value.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{value.description}</p>
               </div>
@@ -108,10 +116,14 @@ export default function About() {
             <article
               key={member.name}
               className={`glass rounded-4xl border border-border/40 shadow-panel overflow-hidden lg:grid lg:items-center lg:gap-6 ${
-                index % 2 === 1 ? "lg:grid-cols-[1fr_minmax(320px,40%)]" : "lg:grid-cols-[minmax(320px,40%)_1fr]"
+                index % 2 === 1
+                  ? "lg:grid-cols-[1fr_minmax(320px,40%)]"
+                  : "lg:grid-cols-[minmax(320px,40%)_1fr]"
               }`}
             >
-              <div className={`relative overflow-hidden bg-[#081016] lg:min-h-112 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+              <div
+                className={`relative overflow-hidden bg-[#081016] lg:min-h-112 ${index % 2 === 1 ? "lg:order-2" : ""}`}
+              >
                 <img
                   src={member.image}
                   alt={member.name}
@@ -120,7 +132,9 @@ export default function About() {
                 <div className="absolute inset-0 bg-linear-to-br from-black/20 via-transparent to-black/60 pointer-events-none" />
               </div>
 
-              <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? "lg:order-1 lg:text-right" : ""}`}>
+              <div
+                className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? "lg:order-1 lg:text-right" : ""}`}
+              >
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-400">
                   {member.title}
                 </p>
@@ -138,11 +152,15 @@ export default function About() {
                     member.name
                   )}
                 </h3>
-                <p className={`mt-5 text-base leading-8 text-muted-foreground max-w-2xl ${index % 2 === 1 ? "lg:ml-auto" : ""}`}>
+                <p
+                  className={`mt-5 text-base leading-8 text-muted-foreground max-w-2xl ${index % 2 === 1 ? "lg:ml-auto" : ""}`}
+                >
                   {member.bio}
                 </p>
 
-                <div className={`mt-8 flex flex-wrap gap-3 justify-start ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+                <div
+                  className={`mt-8 flex flex-wrap gap-3 justify-start ${index % 2 === 1 ? "lg:justify-end" : ""}`}
+                >
                   {member.skills.map((skill) => (
                     <span
                       key={skill}
@@ -164,10 +182,14 @@ export default function About() {
           <div className="glass rounded-3xl border border-border/40 p-8 shadow-panel space-y-4">
             <h3 className="text-xl font-bold text-foreground">Based in Lagos, working worldwide</h3>
             <p className="text-sm leading-7 text-muted-foreground">
-              We're based in Lagos, Nigeria — but we work with clients across Europe, Asia, and beyond. All our work is done remotely and we communicate clearly at every step.
+              We're based in Lagos, Nigeria — but we work with clients across Europe, Asia, and beyond. All
+              our work is done remotely and we communicate clearly at every step.
             </p>
             <div className="pt-2 space-y-2 text-sm">
-              <a href="mailto:contact@arlotech.com.ng" className="block text-foreground hover:text-emerald-400 transition">
+              <a
+                href="mailto:contact@arlotech.com.ng"
+                className="block text-foreground hover:text-emerald-400 transition"
+              >
                 contact@arlotech.com.ng
               </a>
             </div>
@@ -177,7 +199,8 @@ export default function About() {
             <div>
               <h3 className="text-xl font-bold text-foreground">Ready to work together?</h3>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                Tell us about your project and we'll get back to you within 24 hours. The first call is free and there's no pressure.
+                Tell us about your project and we'll get back to you within 24 hours. The first call is free
+                and there's no pressure.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
