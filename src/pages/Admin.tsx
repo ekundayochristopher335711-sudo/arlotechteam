@@ -225,7 +225,7 @@ export default function Admin() {
   // ─── Login ───
   if (!authed) {
     return (
-      <div className="min-h-screen bg-[#0f172a] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-[#050b18] flex items-center justify-center px-6">
         <form onSubmit={handleLogin} className="w-full max-w-sm space-y-6">
           <div className="text-center">
             <div className="mx-auto mb-4 h-14 w-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
@@ -262,9 +262,9 @@ export default function Admin() {
     const estimatedReadTime = Math.max(1, Math.round(words / 200));
 
     return (
-      <div className="min-h-screen bg-[#0f172a] text-white pb-28 sm:pb-0">
+      <div className="min-h-screen bg-[#050b18] text-white pb-28 sm:pb-0">
         {/* Sticky header */}
-        <div className="sticky top-0 z-10 border-b border-zinc-800 bg-[#0f172a]/95 backdrop-blur-md px-4 sm:px-6 py-4">
+        <div className="sticky top-0 z-10 border-b border-zinc-800 bg-[#050b18]/95 backdrop-blur-md px-4 sm:px-6 py-4">
           <div className="mx-auto max-w-3xl flex items-center justify-between gap-4">
             <h1 className="text-lg sm:text-2xl font-bold truncate">
               {creating ? "New Post" : "Edit Post"}
@@ -457,7 +457,7 @@ export default function Admin() {
         </div>
 
         {/* Mobile sticky save bar */}
-        <div className="sm:hidden fixed bottom-0 left-0 right-0 border-t border-zinc-800 bg-[#0f172a]/95 backdrop-blur-md p-4">
+        <div className="sm:hidden fixed bottom-0 left-0 right-0 border-t border-zinc-800 bg-[#050b18]/95 backdrop-blur-md p-4">
           {status && (
             <p className={`text-xs text-center mb-2 ${status.includes("!") ? "text-emerald-400" : "text-yellow-400"}`}>
               {status}
@@ -489,7 +489,7 @@ export default function Admin() {
 
   // ─── Post list ───
   return (
-    <div className="min-h-screen bg-[#0f172a] text-white">
+    <div className="min-h-screen bg-[#050b18] text-white">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 py-8 sm:py-12">
 
         {/* Header */}

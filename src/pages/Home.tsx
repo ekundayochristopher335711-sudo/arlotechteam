@@ -4,40 +4,17 @@ import { PageLayout } from "../components/site/PageLayout";
 import { projects, type Project } from "../data/projects";
 import { useSEO } from "../lib/useSEO";
 import Hero from "../components/site/Hero";
+import { Globe, LayoutDashboard, ShoppingCart, Layers, Palette, Search, Zap, Headphones, ArrowRight } from "lucide-react";
 
 const services = [
-  {
-    name: "Website Design & Development",
-    description: "Custom-built websites that look great, load fast, and turn visitors into customers.",
-  },
-  {
-    name: "Web App Development",
-    description: "Full-featured web apps built for real users — from idea to launch.",
-  },
-  {
-    name: "E-Commerce Stores",
-    description: "Online stores designed to sell — fast checkout, mobile-ready, and easy to manage.",
-  },
-  {
-    name: "UI/UX Design",
-    description: "Interfaces people enjoy using. Every screen designed with clarity and ease in mind.",
-  },
-  {
-    name: "Brand & Visual Identity",
-    description: "Logos, colours, and visual style that make your brand instantly recognisable.",
-  },
-  {
-    name: "SEO & Search Visibility",
-    description: "Technical setup so your site shows up when people search for what you offer.",
-  },
-  {
-    name: "Speed & Performance",
-    description: "We audit and fix slow websites so they rank better and keep visitors from leaving.",
-  },
-  {
-    name: "Ongoing Support",
-    description: "Updates, fixes, and security checks after launch — so you're never left on your own.",
-  },
+  { icon: Globe,           name: "Website Design & Development", description: "Custom-built websites that look great, load fast, and turn visitors into customers." },
+  { icon: LayoutDashboard, name: "Web App Development",          description: "Full-featured web apps built for real users — from idea to launch." },
+  { icon: ShoppingCart,    name: "E-Commerce Stores",            description: "Online stores designed to sell — fast checkout, mobile-ready, and easy to manage." },
+  { icon: Layers,          name: "UI/UX Design",                 description: "Interfaces people enjoy using. Every screen designed with clarity and ease in mind." },
+  { icon: Palette,         name: "Brand & Visual Identity",      description: "Logos, colours, and visual style that make your brand instantly recognisable." },
+  { icon: Search,          name: "SEO & Search Visibility",      description: "Technical setup so your site shows up when people search for what you offer." },
+  { icon: Zap,             name: "Speed & Performance",          description: "We audit and fix slow websites so they rank better and keep visitors from leaving." },
+  { icon: Headphones,      name: "Ongoing Support",              description: "Updates, fixes, and security checks after launch — so you're never left on your own." },
 ];
 
 const team = [
@@ -97,39 +74,42 @@ export default function Home() {
       <Hero />
 
       {/* ── Services ─────────────────────────────────────── */}
-      <section className="bg-slate-50 py-24 border-t border-slate-100">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-14 grid items-end gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-emerald-600">What We Do</p>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900">
-                Everything you need to build a strong online presence.
-              </h2>
-              <p className="mt-4 text-base leading-7 text-slate-500 max-w-2xl">
-                From a brand new website to a fully custom web app — we handle design, development, and
-                launch. You stay focused on running your business.
-              </p>
-            </div>
-            <div className="relative aspect-[16/7] overflow-hidden rounded-2xl border border-slate-200">
-              <img
-                src="/images/services-studio.jpg"
-                alt="A web designer refining a responsive business website"
-                loading="lazy"
-                className="h-full w-full object-cover object-center"
-              />
-            </div>
+      {/* ── Services ─────────────────────────────────────── */}
+      <section className="relative overflow-hidden py-28 border-t border-white/[0.05]">
+        {/* Glow decorations */}
+        <div className="absolute top-0 left-0 h-[500px] w-[500px] rounded-full bg-emerald-500/[0.07] blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-amber-400/[0.04] blur-[120px] pointer-events-none" />
+
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="mb-16 max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-emerald-400 mb-4">What We Do</p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.08]">
+              Everything your business
+              <br />
+              <span className="bg-linear-to-r from-emerald-400 to-yellow-300 bg-clip-text text-transparent">
+                needs online.
+              </span>
+            </h2>
+            <p className="mt-5 text-base leading-7 text-zinc-400">
+              From a brand new website to a fully custom web app — we handle design,
+              development, and launch. You stay focused on running your business.
+            </p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {services.map((service) => (
               <div
                 key={service.name}
-                className="group rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/10"
+                className="group relative rounded-2xl border border-white/[0.07] bg-white/[0.04] p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-emerald-500/30 hover:bg-white/[0.07] hover:shadow-xl hover:shadow-emerald-500/[0.08]"
               >
-                <div className="mb-4 h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
-                  <span className="text-emerald-600 text-lg">→</span>
+                <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/[0.12] text-emerald-400">
+                  <service.icon size={20} />
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900">{service.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-500">{service.description}</p>
+                <h3 className="text-sm font-bold text-white leading-snug">{service.name}</h3>
+                <p className="mt-2.5 text-xs leading-6 text-zinc-400">{service.description}</p>
+                <div className="mt-4 flex items-center gap-1 text-[11px] font-semibold text-emerald-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  Learn more <ArrowRight size={10} />
+                </div>
               </div>
             ))}
           </div>
@@ -202,8 +182,8 @@ export default function Home() {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-[#0f172a] via-[#0f172a]/75 to-transparent" />
-            <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-emerald-400/30 bg-[#0f172a]/80 mb-6 group-hover:bg-emerald-400/20 transition">
+            <div className="absolute inset-0 bg-linear-to-t from-[#050b18] via-[#050b18]/75 to-transparent" />
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-emerald-400/30 bg-[#050b18]/80 mb-6 group-hover:bg-emerald-400/20 transition">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-emerald-400">
                 <path
                   d="M4 6h16M4 10h16M4 14h10"
@@ -258,7 +238,7 @@ export default function Home() {
               key={member.name}
               className="glass rounded-3xl border border-border/40 p-8 hover:-translate-y-1 transition"
             >
-              <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-slate-100 h-48">
+              <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-white/[0.04] h-48">
                 <img
                   src={member.image}
                   alt={member.name}

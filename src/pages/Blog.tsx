@@ -88,7 +88,7 @@ export default function Blog() {
         <section className="mx-auto max-w-7xl px-6 pb-12">
           <Link
             to={`/blog/${featured.slug}`}
-            className="group block overflow-hidden rounded-3xl border border-border/30 bg-white shadow-xl transition hover:-translate-y-1 hover:border-emerald-500/30"
+            className="group block overflow-hidden rounded-3xl border border-border/30 bg-white/4 shadow-xl transition hover:-translate-y-1 hover:border-emerald-500/30"
           >
             <div className="grid lg:grid-cols-2">
               {/* Left — cover */}
@@ -152,7 +152,7 @@ export default function Blog() {
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="group overflow-hidden rounded-2xl border border-border/30 bg-white shadow-lg transition hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-emerald-500/5"
+                className="group overflow-hidden rounded-2xl border border-border/30 bg-white/4 shadow-lg transition hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-emerald-500/5"
               >
                 {/* Cover */}
                 <div className="relative h-44 bg-linear-to-br from-emerald-800/30 via-emerald-950/40 to-background overflow-hidden">
@@ -194,7 +194,7 @@ export default function Blog() {
 
       {/* Newsletter */}
       <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="rounded-3xl border border-emerald-500/20 bg-white p-10 md:p-14 text-center">
+        <div className="rounded-3xl border border-emerald-500/20 bg-white/4 p-10 md:p-14 text-center">
           <h2 className="text-3xl font-bold text-foreground">Never Miss an Update</h2>
           <p className="mt-4 text-base text-muted-foreground max-w-lg mx-auto">
             Get practical web design, SEO, and business tips delivered straight to your inbox.

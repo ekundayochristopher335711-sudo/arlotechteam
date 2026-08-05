@@ -3,15 +3,16 @@ import { motion } from "framer-motion";
 import { ArrowRight, Rocket, Users, BadgeCheck, Headphones } from "lucide-react";
 
 const stats = [
-  { icon: Rocket, number: "20+", label: "Projects Delivered" },
-  { icon: Users, number: "15+", label: "Happy Clients" },
-  { icon: BadgeCheck, number: "3+", label: "Years Experience" },
-  { icon: Headphones, number: "24/7", label: "Support" },
+  { icon: Rocket,      number: "20+", label: "Projects Delivered" },
+  { icon: Users,       number: "15+", label: "Happy Clients"      },
+  { icon: BadgeCheck,  number: "3+",  label: "Years Experience"   },
+  { icon: Headphones,  number: "24/7",label: "Support"            },
 ];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] lg:min-h-screen overflow-hidden bg-[#0f172a] text-white flex flex-col justify-between">
+    <section className="relative min-h-[88vh] lg:min-h-screen overflow-hidden bg-[#050b18] text-white flex flex-col justify-between">
+
       {/* Background image */}
       <img
         src="/images/hero-building.jpg"
@@ -22,60 +23,70 @@ export default function Hero() {
         className="absolute inset-0 h-full w-full object-cover object-right"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 via-[#0f172a]/60 to-[#0f172a]/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 via-transparent to-[#0f172a]/30" />
+      {/* Layered overlays — depth + left-to-right fade */}
+      <div className="absolute inset-0 bg-linear-to-r from-[#050b18]/95 via-[#050b18]/70 to-[#050b18]/10" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#050b18] via-transparent to-[#050b18]/30" />
 
-      {/* Grid */}
+      {/* Atmospheric emerald glow — bottom-left */}
+      <div className="absolute -bottom-20 -left-20 h-[500px] w-[500px] rounded-full bg-emerald-500/[0.09] blur-[130px] pointer-events-none" />
+      {/* Subtle amber glow — top-right */}
+      <div className="absolute -top-10 right-1/4 h-[300px] w-[300px] rounded-full bg-amber-400/[0.04] blur-[100px] pointer-events-none" />
+
+      {/* Subtle grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
-          backgroundImage:
-            "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-          backgroundSize: "80px 80px",
+          backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+          backgroundSize: "72px 72px",
         }}
       />
 
       {/* Content */}
       <div className="relative flex-1 flex items-center">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6 py-20 lg:py-0 w-full">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 py-24 lg:py-0 w-full">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-2xl"
           >
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1.5 text-[9px] sm:text-xs font-semibold uppercase tracking-[.2em] sm:tracking-[.25em] text-green-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-              Digital Solutions That Drive Growth
-            </span>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/[0.08] px-4 py-2 backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_2px_rgba(52,211,153,0.6)]" />
+              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[.22em] text-emerald-300">
+                Digital Solutions That Drive Growth
+              </span>
+            </div>
 
-            <h1 className="mt-5 text-[2rem] sm:text-5xl font-black leading-[1.1] lg:text-7xl">
+            {/* Headline */}
+            <h1 className="mt-6 text-[2.2rem] sm:text-5xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight">
               We Build Digital
               <br />
               Experiences That
               <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-yellow-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-emerald-400 via-emerald-300 to-yellow-300 bg-clip-text text-transparent">
                 Move Your Business
               </span>
             </h1>
 
-            <p className="mt-5 max-w-md text-[13px] sm:text-base leading-6 sm:leading-7 text-zinc-300 lg:text-lg lg:leading-8 lg:max-w-lg">
-              We design and develop modern websites, web applications, and digital solutions that help
-              businesses grow, connect with their audience, and stay ahead of the competition.
+            {/* Subtitle */}
+            <p className="mt-5 max-w-md text-sm sm:text-base leading-7 text-zinc-300/90 lg:text-lg lg:leading-8 lg:max-w-lg">
+              We design and develop modern websites, web applications, and digital
+              solutions that help businesses grow and stay ahead of the competition.
             </p>
 
-            <div className="mt-7 flex gap-3 sm:gap-4">
+            {/* CTAs */}
+            <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
               <Link
                 to="/contact#schedule"
-                className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-green-400 to-yellow-300 px-5 sm:px-8 py-3 sm:py-4 text-sm font-semibold text-black transition hover:scale-105"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-linear-to-r from-emerald-400 to-yellow-300 px-6 sm:px-8 py-3.5 sm:py-4 text-sm font-bold text-[#050b18] shadow-[0_8px_32px_-8px_rgba(52,211,153,0.5)] transition hover:scale-[1.03] hover:shadow-[0_12px_40px_-8px_rgba(52,211,153,0.6)]"
               >
                 Start A Project
-                <ArrowRight className="transition group-hover:translate-x-1" size={16} />
+                <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} />
               </Link>
               <Link
                 to="/work"
-                className="flex items-center rounded-full border border-green-500/40 px-5 sm:px-8 py-3 sm:py-4 text-sm font-semibold text-green-400 transition hover:border-yellow-300 hover:bg-white/5"
+                className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.06] backdrop-blur-sm px-6 sm:px-8 py-3.5 sm:py-4 text-sm font-semibold text-white transition hover:border-emerald-500/40 hover:bg-white/10"
               >
                 View Our Work
               </Link>
@@ -84,21 +95,29 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 pb-8 lg:pb-16 w-full">
-        <div className="grid grid-cols-2 gap-4 sm:flex sm:items-center sm:gap-8 lg:gap-10 max-w-2xl">
+      {/* Stats — premium glass tiles */}
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 pb-10 lg:pb-16 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl"
+        >
           {stats.map((item) => (
-            <div key={item.label} className="flex items-center gap-2.5">
-              <div className="shrink-0 rounded-full border border-green-500/30 bg-green-500/10 p-2 lg:p-3">
-                <item.icon className="h-4 w-4 lg:h-5 lg:w-5 text-green-300" />
+            <div
+              key={item.label}
+              className="flex flex-col items-start gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.05] px-4 py-3.5 backdrop-blur-md"
+            >
+              <div className="rounded-lg bg-emerald-500/10 border border-emerald-500/20 p-1.5">
+                <item.icon className="h-3.5 w-3.5 text-emerald-400" />
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold leading-none">{item.number}</h3>
-                <p className="text-[10px] lg:text-xs text-zinc-400 leading-tight mt-0.5">{item.label}</p>
+                <p className="text-xl font-black leading-none text-white">{item.number}</p>
+                <p className="mt-0.5 text-[10px] text-zinc-400 leading-tight">{item.label}</p>
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

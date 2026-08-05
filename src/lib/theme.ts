@@ -1,14 +1,14 @@
-// Light mode — apply immediately to avoid flash
-document.documentElement.classList.remove("dark");
+// Dark mode — apply immediately to avoid flash
+document.documentElement.classList.add("dark");
 
-export function getPreferredTheme(): "light" {
-  return "light";
+export function getPreferredTheme(): "dark" {
+  return "dark";
 }
 
 export function applyTheme(_theme: "dark" | "light") {
-  document.documentElement.classList.remove("dark");
+  document.documentElement.classList.add("dark");
 }
 
-export function toggleTheme(): "light" {
-  return "light";
+export function toggleTheme(): "dark" {
+  return "dark";
 }

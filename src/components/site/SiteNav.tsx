@@ -87,7 +87,7 @@ export function SiteNav() {
 
             {dropdownOpen && (
               <div
-                className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-48 rounded-xl border border-emerald-500/20 bg-white p-2 shadow-2xl shadow-black/40 backdrop-blur-xl"
+                className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-48 rounded-xl border border-emerald-500/20 bg-[#050b18] p-2 shadow-2xl shadow-black/40 backdrop-blur-xl"
                 onMouseEnter={openDropdown}
                 onMouseLeave={scheduleClose}
               >
@@ -100,7 +100,7 @@ export function SiteNav() {
                       `block rounded-lg px-4 py-2.5 text-sm transition-colors ${
                         isActive
                           ? "bg-emerald-500/15 text-emerald-400"
-                          : "text-zinc-300 hover:bg-white/5 hover:text-white"
+                          : "text-zinc-300 hover:bg-[#050b18]/5 hover:text-white"
                       }`
                     }
                   >
