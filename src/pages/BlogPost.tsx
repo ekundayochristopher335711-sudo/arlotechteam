@@ -86,7 +86,7 @@ export default function BlogPost() {
         </div>
 
         {/* Share / CTA */}
-        <div className="mt-14 rounded-2xl border border-emerald-500/20 bg-[#0f1f1a] p-8 text-center">
+        <div className="mt-14 rounded-2xl border border-emerald-500/20 bg-[#172033] p-8 text-center">
           <h3 className="text-xl font-bold text-foreground">Need help with this?</h3>
           <p className="mt-2 text-sm text-muted-foreground">
             We can help you put these ideas into action. Let's talk about your project.

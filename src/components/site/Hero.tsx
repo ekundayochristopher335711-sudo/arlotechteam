@@ -11,7 +11,7 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] lg:min-h-screen overflow-hidden bg-[#07120C] text-white flex flex-col justify-between">
+    <section className="relative min-h-[85vh] lg:min-h-screen overflow-hidden bg-[#0f172a] text-white flex flex-col justify-between">
       {/* Background image */}
       <img
         src="/images/hero-building.jpg"
@@ -23,8 +23,8 @@ export default function Hero() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#07120C]/90 via-[#07120C]/60 to-[#07120C]/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#07120C]/80 via-transparent to-[#07120C]/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 via-[#0f172a]/60 to-[#0f172a]/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 via-transparent to-[#0f172a]/30" />
 
       {/* Grid */}
       <div

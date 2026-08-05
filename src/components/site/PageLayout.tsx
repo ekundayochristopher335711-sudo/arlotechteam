@@ -30,7 +30,7 @@ export function PageHero({
   imagePosition = "center",
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden border-b border-border/40 bg-[#07120c] text-white">
+    <section className="relative overflow-hidden border-b border-border/40 bg-[#0f172a] text-white">
       <div
         className={`relative mx-auto grid min-h-[560px] max-w-384 lg:grid-cols-[0.94fr_1.06fr] ${image ? "" : "max-w-7xl"}`}
       >
@@ -53,7 +53,7 @@ export function PageHero({
               className="absolute inset-0 h-full w-full object-cover"
               style={{ objectPosition: imagePosition }}
             />
-            <div className="absolute inset-0 bg-linear-to-t from-[#07120c]/35 via-transparent to-transparent lg:bg-linear-to-r lg:from-[#07120c]/20 lg:via-transparent lg:to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#0f172a]/35 via-transparent to-transparent lg:bg-linear-to-r lg:from-[#0f172a]/20 lg:via-transparent lg:to-transparent" />
           </div>
         ) : (
           <div className="absolute inset-0 grid-overlay opacity-20" />

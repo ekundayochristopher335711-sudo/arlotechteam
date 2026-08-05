@@ -97,7 +97,7 @@ export default function Home() {
       <Hero />
 
       {/* ── Services ─────────────────────────────────────── */}
-      <section className="bg-[#0a1f14] py-24 border-t border-emerald-500/10">
+      <section className="bg-[#111c35] py-24 border-t border-emerald-500/10">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 grid items-end gap-8 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
@@ -117,7 +117,7 @@ export default function Home() {
                 loading="lazy"
                 className="h-full w-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-linear-to-r from-[#0a1f14]/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-r from-[#111c35]/20 via-transparent to-transparent" />
             </div>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -200,8 +200,8 @@ export default function Home() {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-[#07120c] via-[#07120c]/75 to-transparent" />
-            <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-emerald-400/30 bg-[#07120c]/80 mb-6 group-hover:bg-emerald-400/20 transition">
+            <div className="absolute inset-0 bg-linear-to-t from-[#0f172a] via-[#0f172a]/75 to-transparent" />
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-emerald-400/30 bg-[#0f172a]/80 mb-6 group-hover:bg-emerald-400/20 transition">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-emerald-400">
                 <path
                   d="M4 6h16M4 10h16M4 14h10"
