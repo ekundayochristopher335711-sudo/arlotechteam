@@ -87,7 +87,7 @@ export function SiteNav() {
 
             {dropdownOpen && (
               <div
-                className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-48 rounded-xl border border-emerald-500/20 bg-[#0b1a12] p-2 shadow-2xl shadow-black/40 backdrop-blur-xl"
+                className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-48 rounded-xl border border-emerald-500/20 bg-white p-2 shadow-2xl shadow-black/40 backdrop-blur-xl"
                 onMouseEnter={openDropdown}
                 onMouseLeave={scheduleClose}
               >

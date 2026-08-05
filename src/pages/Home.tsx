@@ -97,37 +97,39 @@ export default function Home() {
       <Hero />
 
       {/* ── Services ─────────────────────────────────────── */}
-      <section className="bg-[#111c35] py-24 border-t border-emerald-500/10">
+      <section className="bg-slate-50 py-24 border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 grid items-end gap-8 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-emerald-400">What We Do</p>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-white">
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-emerald-600">What We Do</p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900">
                 Everything you need to build a strong online presence.
               </h2>
-              <p className="mt-4 text-base leading-7 text-zinc-400 max-w-2xl">
+              <p className="mt-4 text-base leading-7 text-slate-500 max-w-2xl">
                 From a brand new website to a fully custom web app — we handle design, development, and
                 launch. You stay focused on running your business.
               </p>
             </div>
-            <div className="relative aspect-[16/7] overflow-hidden rounded-2xl border border-emerald-500/20">
+            <div className="relative aspect-[16/7] overflow-hidden rounded-2xl border border-slate-200">
               <img
                 src="/images/services-studio.jpg"
                 alt="A web designer refining a responsive business website"
                 loading="lazy"
                 className="h-full w-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-linear-to-r from-[#111c35]/20 via-transparent to-transparent" />
             </div>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {services.map((service) => (
               <div
                 key={service.name}
-                className="group rounded-2xl border border-emerald-500/15 bg-[#0d2a1b] p-6 transition hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/5"
+                className="group rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/10"
               >
-                <h3 className="text-lg font-semibold text-white">{service.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-zinc-400">{service.description}</p>
+                <div className="mb-4 h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                  <span className="text-emerald-600 text-lg">→</span>
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900">{service.name}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-500">{service.description}</p>
               </div>
             ))}
           </div>
@@ -256,7 +258,7 @@ export default function Home() {
               key={member.name}
               className="glass rounded-3xl border border-border/40 p-8 hover:-translate-y-1 transition"
             >
-              <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-[#081016] h-48">
+              <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-slate-100 h-48">
                 <img
                   src={member.image}
                   alt={member.name}
