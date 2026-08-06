@@ -1,4 +1,4 @@
-// Dark mode — apply immediately to avoid flash
+// Dark mode only — apply immediately to avoid flash
 document.documentElement.classList.add("dark");
 
 export function getPreferredTheme(): "dark" {

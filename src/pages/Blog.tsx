@@ -88,18 +88,18 @@ export default function Blog() {
         <section className="mx-auto max-w-7xl px-6 pb-12">
           <Link
             to={`/blog/${featured.slug}`}
-            className="group block overflow-hidden rounded-3xl border border-border/30 bg-white/4 shadow-xl transition hover:-translate-y-1 hover:border-emerald-500/30"
+            className="group block overflow-hidden rounded-3xl border border-border/30 bg-[#0f1f1a] shadow-xl transition hover:-translate-y-1 hover:border-emerald-500/30"
           >
             <div className="grid lg:grid-cols-2">
               {/* Left — cover */}
-              <div className="relative h-64 lg:h-auto bg-linear-to-br from-emerald-600/30 via-emerald-900/40 to-amber-900/20 overflow-hidden">
+              <div className="relative h-64 lg:h-auto bg-gradient-to-br from-emerald-600/30 via-emerald-900/40 to-amber-900/20 overflow-hidden">
                 <BlogCover
                   slug={featured.slug}
                   image={featured.image}
                   alt={featured.title}
                   className="absolute inset-0"
                 />
-                <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#172033]/60" />
+                <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#0f1f1a]/60" />
                 <div className="absolute top-4 left-4 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-300">
                   Featured
                 </div>
@@ -152,17 +152,17 @@ export default function Blog() {
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="group overflow-hidden rounded-2xl border border-border/30 bg-white/4 shadow-lg transition hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-emerald-500/5"
+                className="group overflow-hidden rounded-2xl border border-border/30 bg-[#0f1f1a] shadow-lg transition hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-emerald-500/5"
               >
                 {/* Cover */}
-                <div className="relative h-44 bg-linear-to-br from-emerald-800/30 via-emerald-950/40 to-background overflow-hidden">
+                <div className="relative h-44 bg-gradient-to-br from-emerald-800/30 via-emerald-950/40 to-background overflow-hidden">
                   <BlogCover
                     slug={post.slug}
                     image={post.image}
                     alt={post.title}
                     className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-[#172033] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1f1a] via-transparent to-transparent" />
                   <span className="absolute bottom-4 left-5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">
                     {post.category}
                   </span>
@@ -194,7 +194,7 @@ export default function Blog() {
 
       {/* Newsletter */}
       <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="rounded-3xl border border-emerald-500/20 bg-white/4 p-10 md:p-14 text-center">
+        <div className="rounded-3xl border border-emerald-500/20 bg-[#0f1f1a] p-10 md:p-14 text-center">
           <h2 className="text-3xl font-bold text-foreground">Never Miss an Update</h2>
           <p className="mt-4 text-base text-muted-foreground max-w-lg mx-auto">
             Get practical web design, SEO, and business tips delivered straight to your inbox.
@@ -223,7 +223,7 @@ export default function Blog() {
             />
             <button
               type="submit"
-              className="rounded-xl bg-linear-to-r from-emerald-400 to-yellow-300 px-6 py-3.5 text-sm font-bold text-[#07100f] hover:scale-105 transition"
+              className="rounded-xl bg-gradient-to-r from-emerald-400 to-yellow-300 px-6 py-3.5 text-sm font-bold text-[#07100f] hover:scale-105 transition"
             >
               Subscribe
             </button>
@@ -234,7 +234,7 @@ export default function Blog() {
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="relative overflow-hidden rounded-3xl border border-emerald-500/20 p-12 text-center">
-          <div className="absolute inset-0 bg-linear-to-br from-emerald-500/8 to-amber-400/8 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 to-amber-400/8 pointer-events-none" />
           <div className="relative">
             <h2 className="text-3xl font-bold text-foreground">Ready to Build Something Amazing?</h2>
             <p className="mt-4 text-base text-muted-foreground max-w-lg mx-auto">
@@ -244,7 +244,7 @@ export default function Blog() {
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <Link
                 to="/contact#schedule"
-                className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-green-400 to-yellow-300 px-8 py-3.5 text-sm font-bold text-[#07100f] shadow-lg hover:scale-105 transition"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-green-400 to-yellow-300 px-8 py-3.5 text-sm font-bold text-[#07100f] shadow-lg hover:scale-105 transition"
               >
                 Get Started <ArrowRight size={16} />
               </Link>

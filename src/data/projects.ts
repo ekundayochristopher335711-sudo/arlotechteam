@@ -16,7 +16,6 @@ export const projects: Project[] = [
     href: "https://arlotechclothing.vercel.app/",
     category: "E-Commerce",
     color: "from-zinc-600/40 to-neutral-900/50",
-    screenshot: "/images/projects/arlotech-clothing.jpg",
     highlight: "A modern e-commerce store for a fashion brand.",
     about:
       "Arlotech Clothing is an online fashion store built for smooth browsing and easy checkout. The site showcases products with clean visuals, organised categories, and a mobile-first shopping experience that makes it easy for customers to find what they want and buy it fast.",
@@ -34,7 +33,6 @@ export const projects: Project[] = [
     href: "https://breadwrapz2.netlify.app",
     category: "Food & Lifestyle Brand",
     color: "from-orange-500/50 to-amber-700/40",
-    screenshot: "/images/projects/breadwrapz.jpg",
     highlight: "Fresh Nigerian meals delivered fast.",
     about:
       "Breadwrapz is a Nigerian food delivery brand — wraps, rice meals, and combos with instant checkout, fast delivery, and easy tracking. The site is built to make ordering feel as good as the food itself, with a bold, appetising design and a smooth mobile experience.",
@@ -51,7 +49,6 @@ export const projects: Project[] = [
     href: "https://christophersdemo.netlify.app",
     category: "Professional Services",
     color: "from-slate-500/30 to-blue-900/20",
-    screenshot: "/images/projects/christopher-law.jpg",
     highlight: "A professional website for a law firm.",
     about:
       "This law firm website was built to establish credibility and make it easy for potential clients to get in touch. The design is clean and authoritative — exactly what you want when someone is deciding whether to trust you with a legal matter.",
@@ -67,7 +64,6 @@ export const projects: Project[] = [
     href: "https://livingfaithchurchiworoko.netlify.app",
     category: "Community & Faith",
     color: "from-purple-500/30 to-indigo-800/20",
-    screenshot: "/images/projects/living-faith.jpg",
     highlight: "A church website for community and outreach.",
     about:
       "Built for Living Faith Church Iworoko, this site serves as a hub for the congregation — sharing service times, events, and sermons. The design is welcoming and easy to navigate for members of all ages.",
@@ -83,7 +79,6 @@ export const projects: Project[] = [
     href: "https://itemseven.netlify.app",
     category: "Hospitality",
     color: "from-red-500/30 to-rose-900/20",
-    screenshot: "/images/projects/item-seven.jpg",
     highlight: "A restaurant site built around food discovery.",
     about:
       "Item Seven is a restaurant homepage designed to draw people in and make them hungry. The focus was on showcasing the menu beautifully and making it effortless for customers to find the restaurant and get in touch.",
