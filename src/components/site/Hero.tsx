@@ -23,8 +23,8 @@ export default function Hero() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#07120C]/90 via-[#07120C]/60 to-[#07120C]/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#07120C]/80 via-transparent to-[#07120C]/30" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#07120C]/90 via-[#07120C]/60 to-[#07120C]/20" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#07120C]/80 via-transparent to-[#07120C]/30" />
 
       {/* Grid */}
       <div
@@ -55,7 +55,7 @@ export default function Hero() {
               <br />
               Experiences That
               <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-yellow-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-emerald-400 via-green-400 to-yellow-300 bg-clip-text text-transparent">
                 Move Your Business
               </span>
             </h1>
@@ -68,7 +68,7 @@ export default function Hero() {
             <div className="mt-7 flex gap-3 sm:gap-4">
               <Link
                 to="/contact#schedule"
-                className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-green-400 to-yellow-300 px-5 sm:px-8 py-3 sm:py-4 text-sm font-semibold text-black transition hover:scale-105"
+                className="group flex items-center gap-2 rounded-full bg-linear-to-r from-green-400 to-yellow-300 px-5 sm:px-8 py-3 sm:py-4 text-sm font-semibold text-black transition hover:scale-105"
               >
                 Start A Project
                 <ArrowRight className="transition group-hover:translate-x-1" size={16} />

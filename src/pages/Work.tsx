@@ -4,8 +4,6 @@ import { projects } from "../data/projects";
 import { useSEO } from "../lib/useSEO";
 
 function ProjectSection({ project, index }: { project: (typeof projects)[0]; index: number }) {
-  const preview = project.screenshot ?? "/images/portfolio-devices.jpg";
-
   return (
     <section className="relative flex flex-col lg:flex-row min-h-screen border-b border-border/30">
       {/* ── Left: project info ── */}
@@ -57,28 +55,50 @@ function ProjectSection({ project, index }: { project: (typeof projects)[0]; ind
         </div>
       </div>
 
-      {/* ── Right: preview ── */}
-      <div className="relative h-[72vw] min-h-96 overflow-hidden bg-[#060d0a] lg:h-screen lg:w-[58%]">
-        <img
-          src={preview}
-          alt={`${project.title} homepage preview`}
-          loading="eager"
-          className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 hover:scale-[1.015]"
+      {/* ── Right: gradient panel ── */}
+      <div className={`relative h-[72vw] min-h-96 overflow-hidden lg:h-screen lg:w-[58%] bg-linear-to-br ${project.color}`}>
+        {/* Subtle grid texture */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
         />
-        <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-l from-background/35 via-transparent to-transparent" />
 
-        {/* Open in new tab badge */}
-        <a
-          href={project.href}
-          target="_blank"
-          rel="noreferrer"
-          className="absolute top-4 right-4 z-30 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/40 px-3 py-1.5 text-xs text-white/70 hover:text-white hover:bg-black/60 transition backdrop-blur-sm"
-        >
-          Open site ↗
-        </a>
+        {/* Glow orb */}
+        <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-white/10 blur-[80px] pointer-events-none" />
 
-        {/* project number watermark */}
-        <span className="absolute bottom-6 right-8 text-7xl font-black text-white/5 select-none leading-none z-10">
+        {/* Browser chrome mockup */}
+        <div className="absolute inset-8 lg:inset-16 flex flex-col rounded-xl border border-white/10 bg-black/30 backdrop-blur-sm overflow-hidden shadow-2xl">
+          {/* Browser bar */}
+          <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-black/20 shrink-0">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+            <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
+            <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
+            <div className="mx-3 flex-1 rounded-full bg-white/10 px-3 py-1 text-[10px] text-white/40 truncate">
+              {project.href.replace("https://", "")}
+            </div>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className="shrink-0 text-[10px] text-white/50 hover:text-white/80 transition"
+            >
+              ↗
+            </a>
+          </div>
+
+          {/* Content area */}
+          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center">
+            <p className="text-xs font-bold uppercase tracking-[.25em] text-white/40 mb-4">{project.category}</p>
+            <h3 className="text-2xl lg:text-4xl font-black text-white/80 leading-tight">{project.title}</h3>
+            <p className="mt-3 text-sm text-white/40 max-w-xs">{project.highlight}</p>
+          </div>
+        </div>
+
+        {/* Project number watermark */}
+        <span className="absolute bottom-4 right-6 text-8xl font-black text-white/[0.04] select-none leading-none z-10">
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>
@@ -99,10 +119,7 @@ export default function Work() {
       <PageHero
         kicker="OUR WORK"
         title="Every site we've built."
-        subtitle={`Explore all ${projects.length} projects through real homepage previews, the thinking behind each build, and the details we delivered.`}
-        image="/images/portfolio-devices.jpg"
-        imageAlt="Responsive website projects displayed across a laptop, tablet, and phone"
-        imagePosition="center"
+        subtitle={`${projects.length} real projects — the thinking behind each build and the details we delivered.`}
       />
 
       {/* Project sections */}
